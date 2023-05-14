@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+const config = require("dotenv").config;
 
-const { configMongoose } = require("./configs/mongo.config");
-const { morganConfig } = require("./configs/morgan.config");
+const { configMongoose } = require("./config/mongo.config");
+const { morganConfig } = require("./config/morgan.config");
 
 const app = express();
 
