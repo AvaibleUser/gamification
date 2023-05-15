@@ -1,9 +1,13 @@
+<br>
+<br>
 <div class="game-board">
     <div class="word-panel">
       <div class="word-board">
-        <div *ngFor="let word of words" class="word">
-          <div *ngFor="let letter of word.split(''); let i = index" class="letter">
-            <span [ngClass]="{ 'visible': selectedLetters.includes(letter), 'hidden': !selectedLetters.includes(letter) }">{{ letter }}</span>
+        <div *ngFor="let word of words; let wordIndex = index" class="word">
+          <div *ngFor="let letter of word.split(''); let letterIndex = index" class="letter">
+            <span [ngClass]="{ 'visible': isLetterRevealed(wordIndex, letterIndex), 'hidden': !isLetterRevealed(wordIndex, letterIndex), 'completed': isWordCompleted(wordIndex) }">
+              {{ getLetterDisplay(wordIndex, letterIndex) }}
+            </span>
           </div>
           <div class="word-space"></div>
         </div>
@@ -21,7 +25,7 @@
     </div>
   
     <div class="word-form">
-      <input type="text" [value]="selectedLetters" readonly>
+      <input type="text" [value]="selectedLetters.join('')" readonly>
       <button class="submit-btn" (click)="formWord()">Validar</button>
     </div>
   
@@ -29,3 +33,4 @@
       {{ alertMessage }}
     </div>
   </div>
+  

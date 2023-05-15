@@ -9,6 +9,7 @@ export class GameInicioComponent {
   words: string[] = ['BAT', 'MET', 'WEB'];
   letters: string[] = this.getUniqueLetters(this.words.join(''));
   selectedLetters: string[] = [];
+  revealedLetters: string[][] = [];
   completedWords: string[] = [];
   showAlert: boolean = false;
   isWordValid: boolean = false;
@@ -33,27 +34,48 @@ export class GameInicioComponent {
       this.isWordValid = true;
       this.alertMessage = '¡Palabra válida!';
       this.completeWord(formedWord);
+      this.revealWord(formedWord);
     } else {
       this.showAlert = true;
       this.isWordValid = false;
       this.alertMessage = 'Palabra inválida';
     }
-    this.selectedLetters = []; // Limpiar el selector de letras después de validar una palabra
   }
 
   completeWord(word: string): void {
     this.completedWords.push(word);
+    // Comprobar si todas las palabras han sido completadas
+    if (this.completedWords.length === this.words.length) {
+      console.log('¡Has completado todas las palabras!');
+    }
   }
 
-  isWordCompleted(wordIndex: number, letterIndex: number): boolean {
-    const word = this.words[wordIndex];
-    const letter = word[letterIndex];
-    return this.completedWords.includes(word) && this.selectedLetters.includes(letter);
+  revealWord(word: string): void {
+    const revealedLetters: string[] = [];
+    for (let i = 0; i < word.length; i++) {
+      revealedLetters.push(word[i]);
+    }
+    this.revealedLetters.push(revealedLetters);
+  }
+
+  isLetterRevealed(wordIndex: number, letterIndex: number): boolean {
+    return (
+      this.revealedLetters[wordIndex] &&
+      this.revealedLetters[wordIndex].length > letterIndex
+    );
   }
 
   getLetterDisplay(wordIndex: number, letterIndex: number): string {
     const word = this.words[wordIndex];
     const letter = word[letterIndex];
-    return this.isWordCompleted(wordIndex, letterIndex) ? letter : '';
+    if (this.isLetterRevealed(wordIndex, letterIndex)) {
+      return letter;
+    }
+    return '';
+  }
+
+  isWordCompleted(wordIndex: number): boolean {
+    const word = this.words[wordIndex];
+    return this.completedWords.includes(word);
   }
 }
