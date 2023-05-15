@@ -9,7 +9,7 @@ const commentsSchema = new Schema({
   stars: { type: Number, required: true },
 });
 
-export const gamesSchema = new Schema({
+const gamesSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   image: { type: String, required: true },

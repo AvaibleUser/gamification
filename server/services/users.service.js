@@ -4,14 +4,23 @@ const { usersModel } = require("../model/users.model");
 const salt = 10;
 
 /**
- * @param {string} email
+ * @param {string} username
+ */
+async function findOneUser(username) {
+  const user = await usersModel.findOne({ username });
+
+  return user;
+}
+
+/**
+ * @param {string} username
  * @param {string} password
  */
-async function login(email, password) {
-  const user = await usersModel.findOne({ email });
+async function login(username, password) {
+  const user = await usersModel.findOne({ username });
 
   if (!user) {
-    throw new Error("The email or password are not correct");
+    throw new Error("The username or password are not correct");
   }
 
   const isCorrectCredentials = await bcrypt.compare(password, user.password);
@@ -19,23 +28,23 @@ async function login(email, password) {
   if (isCorrectCredentials) {
     return user.toObject();
   } else {
-    throw new Error("The email or password are not correct");
+    throw new Error("The username or password are not correct");
   }
 }
 
 /**
  * @param {string} name
- * @param {string} email
+ * @param {string} username
  * @param {string} password
  * @param {boolean} student
  */
-async function signup(name, email, password, student = true) {
+async function signup(name, username, password, student = true) {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   try {
     await usersModel.create({
       name,
-      email,
+      username,
       student,
       password: hashedPassword,
     });
@@ -53,21 +62,16 @@ async function signup(name, email, password, student = true) {
  *   student: boolean?;
  *   wins: number?;
  * }} user si se manda undefined de algun atributo solo se omitira,
- * email no se debe de modificar porque se usa como identificador
+ * username no se debe de modificar porque se usa como identificador
  */
 async function updateOneUser(user) {
-  const email = user?.email;
-  if (!email) {
-    throw new Error("The user or email is undefined");
-  }
-
-  const userToUpdate = { ...user, email: undefined, playedGames: undefined };
+  const userToUpdate = { ...user, username: undefined, playedGames: undefined };
   if (user?.password) {
     userToUpdate.password = await bcrypt.hash(user.password, salt);
   }
 
   const updatedUser = await usersModel.findOneAndUpdate(
-    { email },
+    { username },
     { ...userToUpdate },
     { new: true }
   );
@@ -78,11 +82,11 @@ async function updateOneUser(user) {
 }
 
 /**
- * @param {string} email
+ * @param {string} username
  */
-async function deleteOneUser(email) {
+async function deleteOneUser(username) {
   const updatedUser = await usersModel.findOneAndUpdate(
-    { email },
+    { username },
     { deleted: true },
     { new: true }
   );
@@ -91,24 +95,20 @@ async function deleteOneUser(email) {
 }
 
 /**
- * @param {string} email
+ * @param {string} username
  * @param {string} game
  */
-async function addWinToUser(email, game) {
-  if (!email) {
-    throw new Error("The email is undefined or empty");
-  }
-
+async function addWinToUser(username, game) {
   const updateExisting = {
     updateOne: {
-      filter: { email, "playedGames.game": game },
+      filter: { username, "playedGames.game": game },
       update: { $inc: { "playedGames.$.wins": 1 } },
     },
   };
 
   const pushIfNotExists = {
     updateOne: {
-      filter: { email, "playedGames.game": { $ne: game } },
+      filter: { username, "playedGames.game": { $ne: game } },
       update: { $push: { playedGames: { game, wins: 1 } } },
     },
   };
@@ -120,3 +120,12 @@ async function addWinToUser(email, game) {
 
   return operations.isOk();
 }
+
+module.exports = {
+  findOneUser,
+  login,
+  signup,
+  updateOneUser,
+  deleteOneUser,
+  addWinToUser,
+};

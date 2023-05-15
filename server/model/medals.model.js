@@ -7,7 +7,7 @@ const wonBySchema = new Schema({
   date: { type: Date, default: () => new Date() },
 });
 
-export const medalsSchema = new Schema({
+const medalsSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   image: { type: String, required: true },

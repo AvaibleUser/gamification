@@ -5,7 +5,7 @@
 ```
 {
   name: string,
-  email: string, // unique
+  username: string, // unique
   password: string, // ver jwt
   student: boolean,
   wins: number,

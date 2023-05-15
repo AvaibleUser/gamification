@@ -9,7 +9,7 @@ const playedGamesSchema = new Schema({
 
 const usersSchema = new Schema({
   name: { type: String, required: true },
-  email: { type: String, required: true },
+  username: { type: String, required: true },
   password: { type: String, required: true },
   student: { type: Boolean, default: true },
   deleted: { type: Boolean, default: false },
@@ -23,7 +23,7 @@ usersSchema.set("toJSON", {
   },
 });
 
-usersSchema.index({ email: 1 }, { unique: true });
+usersSchema.index({ username: 1 }, { unique: true });
 
 const usersModel = model("users", usersSchema);
 

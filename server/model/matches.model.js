@@ -14,7 +14,7 @@ const chatsSchema = new Schema({
   createdAt: { type: Date, default: () => new Date() },
 });
 
-export const matchesSchema = new Schema({
+const matchesSchema = new Schema({
   game: { type: String, required: true },
   creator: { type: String, required: true },
   createdAt: { type: Date, default: () => new Date() },

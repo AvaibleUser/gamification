@@ -7,7 +7,7 @@ const usersSchema = new Schema({
   points: { type: Number, required: true },
 });
 
-export const globalRankingsSchema = new Schema({
+const globalRankingsSchema = new Schema({
   game: { type: String, required: true },
   creator: { type: String, required: true },
   finishedAt: { type: Date, default: () => new Date() },
