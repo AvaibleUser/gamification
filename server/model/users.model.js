@@ -4,7 +4,7 @@ const { Schema, model } = mongoose;
 
 const playedGamesSchema = new Schema({
   game: { type: String, required: true },
-  wins: { type: Number },
+  wins: { type: Number, required: true },
 });
 
 const usersSchema = new Schema({
@@ -12,6 +12,7 @@ const usersSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   student: { type: Boolean, default: true },
+  deleted: { type: Boolean, default: false },
   wins: { type: Number, default: 0 },
   playedGames: [playedGamesSchema],
 });

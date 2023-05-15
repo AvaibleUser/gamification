@@ -9,6 +9,7 @@
   password: string, // ver jwt
   student: boolean,
   wins: number,
+  deleted: boolean,
   playedGames: [
     {
       game: string,
