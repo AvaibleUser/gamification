@@ -1,0 +1,31 @@
+<div class="game-board">
+    <div class="word-panel">
+      <div class="word-board">
+        <div *ngFor="let word of words" class="word">
+          <div *ngFor="let letter of word.split(''); let i = index" class="letter">
+            <span [ngClass]="{ 'visible': selectedLetters.includes(letter), 'hidden': !selectedLetters.includes(letter) }">{{ letter }}</span>
+          </div>
+          <div class="word-space"></div>
+        </div>
+      </div>
+      <div class="letter-panel">
+        <div *ngFor="let letter of letters" class="letter" (click)="selectLetter(letter)">{{ letter }}</div>
+      </div>
+    </div>
+  
+    <div class="selected-letters">
+      <div class="selected-letter" *ngFor="let letter of selectedLetters; let i = index">
+        <span>{{ letter }}</span>
+        <button class="remove-btn" (click)="removeSelectedLetter(i)">&times;</button>
+      </div>
+    </div>
+  
+    <div class="word-form">
+      <input type="text" [value]="selectedLetters" readonly>
+      <button class="submit-btn" (click)="formWord()">Validar</button>
+    </div>
+  
+    <div *ngIf="showAlert" class="alert" [ngClass]="{ 'success': isWordValid, 'failure': !isWordValid }">
+      {{ alertMessage }}
+    </div>
+  </div>
