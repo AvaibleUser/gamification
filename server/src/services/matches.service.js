@@ -24,20 +24,15 @@ async function findOneMatch(id) {
  * @param {*} state
  */
 async function saveMatch(game, creator, createdAt, gameTime, state) {
-  try {
-    const match = await matchesModel.create({
-      game,
-      creator,
-      createdAt,
-      gameTime,
-      state,
-    });
+  const match = await matchesModel.create({
+    game,
+    creator,
+    createdAt,
+    gameTime,
+    state,
+  });
 
-    return match;
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
+  return match;
 }
 
 /**

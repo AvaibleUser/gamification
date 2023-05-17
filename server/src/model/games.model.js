@@ -14,7 +14,11 @@ const commentsSchema = new Schema({
 });
 
 const gamesSchema = new Schema({
-  name: { type: String, required: true },
+  name: {
+    type: String,
+    required: true,
+    unique: [true, "El nombre del juego ya esta en uso"],
+  },
   description: { type: String, required: true },
   image: { type: String, required: true },
   url: { type: String, required: true },
@@ -27,8 +31,6 @@ gamesSchema.set("toJSON", {
     delete game.__v;
   },
 });
-
-gamesSchema.index({ name: 1 }, { unique: true });
 
 const gamesModel = model("games", gamesSchema);
 

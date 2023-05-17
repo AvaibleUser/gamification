@@ -38,22 +38,17 @@ async function login(username, password) {
  * @param {string} password
  * @param {boolean} student
  */
-async function signup(name, username, password, student = true) {
+async function signup(name, username, password, student) {
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  try {
-    await usersModel.create({
-      name,
-      username,
-      student,
-      password: hashedPassword,
-    });
+  await usersModel.create({
+    name,
+    username,
+    student,
+    password: hashedPassword,
+  });
 
-    return true;
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
+  return true;
 }
 
 /**
@@ -67,8 +62,9 @@ async function signup(name, username, password, student = true) {
  * username no se debe de modificar porque se usa como identificador
  */
 async function updateOneUser(user) {
+  const username = user.username;
   const userToUpdate = { ...user, username: undefined, playedGames: undefined };
-  if (user?.password) {
+  if (user.password) {
     userToUpdate.password = await bcrypt.hash(user.password, salt);
   }
 

@@ -21,14 +21,9 @@ async function findOneMedal(name) {
  * @param {string} image
  */
 async function saveMedal(name, description, image) {
-  try {
-    await medaltsModel.create({ name, description, image });
+  await medaltsModel.create({ name, description, image });
 
-    return true;
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
+  return true;
 }
 
 /**

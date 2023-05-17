@@ -9,7 +9,11 @@ const playedGamesSchema = new Schema({
 
 const usersSchema = new Schema({
   name: { type: String, required: true },
-  username: { type: String, required: true },
+  username: {
+    type: String,
+    required: true,
+    unique: [true, "El nombre de usuario ya esta en uso"],
+  },
   password: { type: String, required: true },
   student: { type: Boolean, default: true },
   deleted: { type: Boolean, default: false },
@@ -22,9 +26,11 @@ usersSchema.set("toJSON", {
     delete user.__v;
   },
 });
-
-usersSchema.index({ username: 1 }, { unique: true });
-
+userSchema.pre('save', async function(next) {
+    this.password = await bcrypt.hash(this.password, 12);
+    this.passwordConfirm = undefined;
+      next();
+});
 const usersModel = model("users", usersSchema);
 
 module.exports = { usersModel, usersSchema };

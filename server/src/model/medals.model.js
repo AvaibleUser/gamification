@@ -8,7 +8,11 @@ const wonBySchema = new Schema({
 });
 
 const medalsSchema = new Schema({
-  name: { type: String, required: true },
+  name: {
+    type: String,
+    required: true,
+    unique: [true, "El nombre de la medalla ya esta en uso"],
+  },
   description: { type: String, required: true },
   image: { type: String, required: true },
   wonBy: [wonBySchema],
@@ -19,8 +23,6 @@ medalsSchema.set("toJSON", {
     delete medal.__v;
   },
 });
-
-medalsSchema.index({ name: 1 }, { unique: true });
 
 const medaltsModel = model("medals", medalsSchema);
 

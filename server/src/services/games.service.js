@@ -23,14 +23,9 @@ async function findOneGame(name) {
  * @param {number} maxPlayers
  */
 async function saveGame(name, description, image, url, maxPlayers) {
-  try {
-    await gamesModel.create({ name, description, image, url, maxPlayers });
+  await gamesModel.create({ name, description, image, url, maxPlayers });
 
-    return true;
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
+  return true;
 }
 
 /**
