@@ -20,7 +20,7 @@ async function login(username, password) {
   const user = await usersModel.findOne({ username });
 
   if (!user) {
-    throw new Error("The username or password are not correct");
+    throw new Error("El usuario o la contraseña son incorrectas");
   }
 
   const isCorrectCredentials = await bcrypt.compare(password, user.password);
@@ -28,7 +28,7 @@ async function login(username, password) {
   if (isCorrectCredentials) {
     return user.toObject();
   } else {
-    throw new Error("The username or password are not correct");
+    throw new Error("El usuario o la contraseña son incorrectas");
   }
 }
 
@@ -51,12 +51,14 @@ async function signup(name, username, password, student = true) {
 
     return true;
   } catch (err) {
+    console.log(err);
     return false;
   }
 }
 
 /**
  * @param {{
+ *   username: string;
  *   name: string?;
  *   password: string?;
  *   student: boolean?;
@@ -113,12 +115,9 @@ async function addWinToUser(username, game) {
     },
   };
 
-  const operations = await usersModel.bulkWrite([
-    updateExisting,
-    pushIfNotExists,
-  ]);
+  const results = await usersModel.bulkWrite([updateExisting, pushIfNotExists]);
 
-  return operations.isOk();
+  return results.isOk();
 }
 
 module.exports = {

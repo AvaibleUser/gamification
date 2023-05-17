@@ -26,25 +26,23 @@ async function saveMedal(name, description, image) {
 
     return true;
   } catch (err) {
+    console.log(err);
     return false;
   }
 }
 
 /**
  * @param {{
- *  description: string?;
- *  image: string?;
+ *   name: string;
+ *   description: string?;
+ *   image: string?;
  * }} medal
  */
 async function updateMedal(medal) {
-  const name = medal?.name;
-  if (!name) {
-    throw new Error("The medal or medal name is undefined");
-  }
-
+  const name = medal.name;
   const updatedMedal = await medaltsModel.findOneAndUpdate(
     { name },
-    { ...medal, name: undefined },
+    { ...medal, name: undefined, wonBy: undefined },
     { new: true }
   );
 
@@ -63,7 +61,7 @@ async function addMedalWinner(name, username) {
       name,
       "wonBy.username": { $ne: username },
     },
-    { $push: { "wonBy.username": username } },
+    { $push: { wonBy: { username } } },
     { new: true }
   );
 

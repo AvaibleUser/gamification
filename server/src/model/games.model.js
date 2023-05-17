@@ -6,7 +6,11 @@ const commentsSchema = new Schema({
   username: { type: String, required: true },
   content: { type: String, required: true },
   createdAt: { type: Date, default: () => new Date() },
-  stars: { type: Number, required: true },
+  stars: {
+    type: Number,
+    min: [1, "No se puede poner menos de una estrella"],
+    max: [5, "Solo se pueden calificar con un maximo de cinco estrellas"],
+  },
 });
 
 const gamesSchema = new Schema({
