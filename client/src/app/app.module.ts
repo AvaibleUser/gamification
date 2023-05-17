@@ -5,19 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameOneComponent } from './game-one/game-one/game-one.component';
 import { GameInicioComponent } from './game-one/game-inicio/game-inicio.component';
+import { GameRankingComponent } from './game-one/game-ranking/game-ranking.component';
+import { GameDataService } from './game-one/game-data.service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GameOneComponent,
-    GameInicioComponent
+    GameInicioComponent,
+    GameRankingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [GameDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
