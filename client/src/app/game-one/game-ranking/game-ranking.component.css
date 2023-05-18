@@ -1,39 +1,56 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: purple;
-    color: white;
-    padding: 20px;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-  }
-  
-  .score-table {
-    width: 300px;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .score-table th,
-  .score-table td {
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .score-table th {
-    background-color: #555;
-    color: white;
-  }
-  
-  .score-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .score-table tr.winner {
-    background-color: yellow;
-    font-weight: bold;
-  }
-  
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  background-color: purple;
+  color: rgb(4, 2, 2);
+  padding: 20px;
+}
+
+.game-ranking-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.game-ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid rgb(9, 6, 6);
+}
+
+th {
+  background-color: #4e4e4e;
+  color: rgb(242, 232, 232);
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+h1{
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+
+}

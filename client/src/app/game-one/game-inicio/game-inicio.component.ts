@@ -27,10 +27,11 @@ export class GameInicioComponent implements OnInit {
 //  Configuracion del tiempo
   timer: any;
   timeElapsed: number = 0;
-
+  gameFinished: boolean = false;
 
  // constructor() {}
- constructor(private gameDataService: GameDataService) { }
+// constructor(private gameDataService: GameDataService) { }
+constructor(private gameDataService: GameDataService, private router: Router) {}
 
  ngOnInit() {
     // Revelar las pistas de letras al inicio del juego
@@ -126,7 +127,7 @@ export class GameInicioComponent implements OnInit {
      
       console.log('¡Has completado todas las palabras en', totalTime, 'segundos!');
       console.log('El ganador es', winner, 'con', winnerScore, 'puntos.');
-  
+      this.gameFinished = true;
       alert(
         '¡Has completado todas las palabras en ' +
           totalTime +
@@ -142,7 +143,7 @@ export class GameInicioComponent implements OnInit {
    // Guardar los datos en el servicio
    this.gameDataService.players = this.players;
    this.gameDataService.startTime = this.startTime;
-
+   this.router.navigate(['/ranking']);
     } else {
       // Cambiar al siguiente jugador
       this.moveToNextPlayer();
