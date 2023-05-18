@@ -45,9 +45,7 @@ async function updateOneGame(game) {
     { new: true }
   );
 
-  return updatedGame && "toObject" in updatedGame
-    ? updatedGame.toObject()
-    : undefined;
+  return updatedGame;
 }
 
 /**

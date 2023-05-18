@@ -114,7 +114,7 @@ async function reviewGame(req, res) {
 
   await addGameReviews(gameName, username, content, stars);
 
-  res.status(201).send("Se la victoria al perfil del usuario");
+  res.status(201).send("Se agrego el comentario del juego");
 }
 
 module.exports = {

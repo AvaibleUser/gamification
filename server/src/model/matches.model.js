@@ -5,7 +5,7 @@ const { Schema, model } = mongoose;
 const playersSchema = new Schema({
   username: { type: String, required: true },
   guest: { type: Boolean, default: true },
-  points: { type: Number, required: true },
+  points: { type: Number, default: 0 },
 });
 
 const chatsSchema = new Schema({
@@ -26,6 +26,7 @@ const matchesSchema = new Schema({
 
 matchesSchema.set("toJSON", {
   transform: (_doc, match) => {
+    match._id = match._id.toString();
     delete match.__v;
   },
 });

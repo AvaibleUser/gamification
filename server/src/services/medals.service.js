@@ -41,9 +41,7 @@ async function updateOneMedal(medal) {
     { new: true }
   );
 
-  return updatedMedal && "toObject" in updatedMedal
-    ? updatedMedal.toObject()
-    : undefined;
+  return updatedMedal;
 }
 
 /**

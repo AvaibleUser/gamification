@@ -1,5 +1,4 @@
 const { matchesModel } = require("../model/matches.model");
-const mongoose = require("mongoose");
 
 async function findMathces() {
   const matches = await matchesModel.find();
@@ -8,7 +7,7 @@ async function findMathces() {
 }
 
 /**
- * @param {string} name
+ * @param {ObjectId} id
  */
 async function findOneMatch(id) {
   const matches = await matchesModel.findById(id);
@@ -19,53 +18,35 @@ async function findOneMatch(id) {
 /**
  * @param {string} game
  * @param {string} creator
- * @param {date} createdAt
- * @param {number} gameTime
  * @param {*} state
  */
-async function saveMatch(game, creator, createdAt, gameTime, state) {
-  const match = await matchesModel.create({
-    game,
-    creator,
-    createdAt,
-    gameTime,
-    state,
-  });
+async function saveMatch(game, creator, state) {
+  const match = await matchesModel.create({ game, creator, state });
 
   return match;
 }
 
 /**
- * @param {{
- *   _id: string | ObjectId;
- *   game: string;
- *   creator: string?;
- *   createdAt: date?;
- *   gameTime: number?;
- *   state: *?;
- * }} match
+ * @param {ObjectId} _id
+ * @param {*} state
  */
-async function updateMatch(match) {
-  const _id = match._id;
-  const updatedMatch = await matchesModel.findOneAndUpdate(
-    { _id },
-    { ...match, players: undefined, chat: undefined },
+async function updateOneMatch(_id, state) {
+  const updatedMatch = await matchesModel.findByIdAndUpdate(
+    _id,
+    { state },
     { new: true }
   );
 
-  return updatedMatch && "toObject" in updatedMatch
-    ? updatedMatch.toObject()
-    : undefined;
+  return updatedMatch;
 }
 
 /**
- * @param {string | ObjectId} _id
+ * @param {ObjectId} _id
  * @param {string} username
  * @param {boolean} guest
  * @param {number} points
  */
 async function addPlayer(_id, username, guest, points) {
-  _id = typeof _id === "string" ? new mongoose.Types.ObjectId(_id) : _id;
   const match = await matchesModel.findOneAndUpdate(
     {
       _id,
@@ -84,12 +65,11 @@ async function addPlayer(_id, username, guest, points) {
 }
 
 /**
- * @param {string | ObjectId} _id
+ * @param {ObjectId} _id
  * @param {string} username
  * @param {string} content
  */
 async function addChatMessage(_id, username, content) {
-  _id = typeof _id === "string" ? new mongoose.Types.ObjectId(_id) : _id;
   const match = await matchesModel.findByIdAndUpdate(
     _id,
     { $push: { chat: { username, content } } },
@@ -103,7 +83,7 @@ module.exports = {
   findMathces,
   findOneMatch,
   saveMatch,
-  updateMatch,
+  updateOneMatch,
   addPlayer,
   addChatMessage,
 };

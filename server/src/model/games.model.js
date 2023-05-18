@@ -28,6 +28,7 @@ const gamesSchema = new Schema({
 
 gamesSchema.set("toJSON", {
   transform: (_doc, game) => {
+    game._id = game._id.toString();
     delete game.__v;
   },
 });

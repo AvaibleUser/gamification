@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+
+const salt = 10;
 
 const { Schema, model } = mongoose;
 
@@ -23,14 +26,16 @@ const usersSchema = new Schema({
 
 usersSchema.set("toJSON", {
   transform: (_doc, user) => {
+    user._id = user._id.toString();
     delete user.__v;
   },
 });
-userSchema.pre('save', async function(next) {
-    this.password = await bcrypt.hash(this.password, 12);
-    this.passwordConfirm = undefined;
-      next();
+
+usersSchema.pre("save", async function (next) {
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
 });
+
 const usersModel = model("users", usersSchema);
 
 module.exports = { usersModel, usersSchema };

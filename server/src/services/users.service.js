@@ -74,9 +74,7 @@ async function updateOneUser(user) {
     { new: true }
   );
 
-  return updatedUser && "toObject" in updatedUser
-    ? updatedUser.toObject()
-    : undefined;
+  return updatedUser;
 }
 
 /**

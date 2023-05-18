@@ -20,6 +20,7 @@ const medalsSchema = new Schema({
 
 medalsSchema.set("toJSON", {
   transform: (_doc, medal) => {
+    medal._id = medal._id.toString();
     delete medal.__v;
   },
 });
