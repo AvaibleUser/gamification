@@ -6,9 +6,7 @@ const {
   addMedalWinner,
 } = require("../services/medals.service");
 const { dirname } = require("path");
-const bcrypt = require("bcrypt");
-
-const salt = 8;
+const { nanoid } = require("nanoid");
 
 /**
  * @param {Request} req
@@ -29,7 +27,7 @@ async function getAllMedals(req, res) {
  * @param {Response} res
  */
 async function getMedal(req, res) {
-  const { medalName } = req.params;
+  const { name: medalName } = req.params;
 
   if (!medalName) {
     return res.status(400).send("Se debe de enviar un nombre de medalla");
@@ -50,7 +48,7 @@ async function getMedal(req, res) {
  * @param {Response} res
  */
 async function createMedal(req, res) {
-  const { medalName, description } = req.body;
+  const { name: medalName, description } = req.body;
   const { image } = req.files;
 
   if (!medalName || !description || !image) {
@@ -67,7 +65,7 @@ async function createMedal(req, res) {
   }
 
   const rootDir = dirname(require.main?.filename);
-  const imageName = await bcrypt.hash(image.name, salt);
+  const imageName = nanoid();
   const imageUrl = `${rootDir}/public/images/${imageName}`;
 
   await saveMedal(medalName, description, imageUrl);
@@ -104,20 +102,20 @@ async function updateMedal(req, res) {
  * @param {Response} res
  */
 async function addToMedalWinners(req, res) {
-  const { username, medalName } = req.body;
+  const { username, name: medalName } = req.body;
 
   if (!username || !medalName) {
     return res
       .status(400)
       .send(
-        "Se debe de mandar un objeto usuario con " +
-          "nombre de usuario y el nombre del juego"
+        "Se debe de mandar un objeto con el nombre de " +
+          "usuario y el nombre de la medalla"
       );
   }
 
   await addMedalWinner(username, medalName);
 
-  res.status(201).send("Se la victoria al perfil del usuario");
+  res.status(201).send("Se agrego la medalla al perfil del usuario");
 }
 
 module.exports = {

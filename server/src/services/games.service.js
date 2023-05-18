@@ -37,7 +37,7 @@ async function saveGame(name, description, image, url, maxPlayers) {
  *   maxPlayers: number?;
  * }} game
  */
-async function updateGame(game) {
+async function updateOneGame(game) {
   const name = game.name;
   const updatedGame = await gamesModel.findOneAndUpdate(
     { name },
@@ -80,6 +80,6 @@ module.exports = {
   findGames,
   findOneGame,
   saveGame,
-  updateGame,
+  updateOneGame,
   addGameReviews,
 };

@@ -123,14 +123,14 @@ async function addWinner(req, res) {
     return res
       .status(400)
       .send(
-        "Se debe de mandar un objeto usuario con " +
+        "Se debe de mandar un objeto con el " +
           "nombre de usuario y el nombre del juego"
       );
   }
 
   await addWinToUser(username, game);
 
-  res.status(201).send("Se la victoria al perfil del usuario");
+  res.status(201).send("Se agrego la victoria al perfil del usuario");
 }
 
 module.exports = {
