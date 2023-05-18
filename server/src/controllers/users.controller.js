@@ -128,7 +128,7 @@ async function addWinner(req, res) {
       );
   }
 
-  const ok = await addWinToUser(username, game);
+  await addWinToUser(username, game);
 
   res.status(201).send("Se la victoria al perfil del usuario");
 }

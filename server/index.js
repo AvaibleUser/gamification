@@ -1,4 +1,5 @@
 const express = require("express");
+const fileUpload = require('express-fileupload');
 const cors = require("cors");
 const config = require("dotenv").config;
 
@@ -14,6 +15,7 @@ config();
 const url = process.env.MONGODB_URI || "url";
 configMongoose(url);
 
+app.use(fileUpload());
 app.use(cors());
 app.use(express.json());
 app.use(morganConfig());

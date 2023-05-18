@@ -33,7 +33,7 @@ async function saveMedal(name, description, image) {
  *   image: string?;
  * }} medal
  */
-async function updateMedal(medal) {
+async function updateOneMedal(medal) {
   const name = medal.name;
   const updatedMedal = await medaltsModel.findOneAndUpdate(
     { name },
@@ -67,6 +67,6 @@ module.exports = {
   findMedals,
   findOneMedal,
   saveMedal,
-  updateMedal,
+  updateOneMedal,
   addMedalWinner,
 };
