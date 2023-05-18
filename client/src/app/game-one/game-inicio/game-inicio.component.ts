@@ -82,7 +82,40 @@ constructor(private gameDataService: GameDataService, private router: Router) {}
       this.alertMessage = 'Palabra inválida';
       this.completeWord(formedWord, currentPlayerIndex, currentPlayerScore - 3);
     }
-    this.selectedLetters = []; // Limpiar las letras seleccionadas  
+    this.selectedLetters = []; // Limpiar las letras seleccionadas
+  
+    // Comprobar si todas las palabras han sido encontradas
+    const foundWords = this.completedWords.filter(word => this.words.includes(word));
+    if (foundWords.length === this.words.length) {
+      const totalTime = this.getElapsedTime();
+      const winnerIndex = this.getWinnerIndex();
+      const winner = this.players[winnerIndex];
+      const winnerScore = this.playerScores[winnerIndex];
+      const winnerScores = this.gameDataService.playerScores[winnerIndex];
+  
+      console.log('¡Has encontrado todas las palabras en', totalTime, 'segundos!');
+      console.log('El ganador es', winner, 'con', winnerScore, 'puntos.');
+      this.gameFinished = true;
+      alert(
+        '¡Has encontrado todas las palabras en ' +
+          totalTime +
+          ' segundos!\n\n' +
+          'El ganador es ' +
+          winner +
+          ' con ' +
+          winnerScore +
+          ' puntos.'
+      );
+      // Detener el temporizador
+      this.stopTimer();
+      // Guardar los datos en el servicio
+      this.gameDataService.players = this.players;
+      this.gameDataService.startTime = this.startTime;
+      this.router.navigate(['/ranking']);
+    } else {
+      // Cambiar al siguiente jugador
+      this.moveToNextPlayer();
+    }
   }
   
   moveToNextPlayer(): void {
@@ -117,37 +150,6 @@ constructor(private gameDataService: GameDataService, private router: Router) {}
     this.playerScores[playerIndex] = newScore;
     this.gameDataService.playerScores[playerIndex] = newScore;
 
-    // Comprobar si todas las palabras han sido completadas
-    if (this.completedWords.length === this.words.length) {
-      const totalTime = this.getElapsedTime();
-      const winnerIndex = this.getWinnerIndex();
-      const winner = this.players[winnerIndex];
-      const winnerScore = this.playerScores[winnerIndex];
-      const winnerScores = this.gameDataService.playerScores[winnerIndex];
-     
-      console.log('¡Has completado todas las palabras en', totalTime, 'segundos!');
-      console.log('El ganador es', winner, 'con', winnerScore, 'puntos.');
-      this.gameFinished = true;
-      alert(
-        '¡Has completado todas las palabras en ' +
-          totalTime +
-          ' segundos!\n\n' +
-          'El ganador es ' +
-          winner +
-          ' con ' +
-          winnerScore +
-          ' puntos.'
-      );
-      // Detener el temporizador
-      this.stopTimer();
-   // Guardar los datos en el servicio
-   this.gameDataService.players = this.players;
-   this.gameDataService.startTime = this.startTime;
-   this.router.navigate(['/ranking']);
-    } else {
-      // Cambiar al siguiente jugador
-      this.moveToNextPlayer();
-    }
   }
   
   getWinnerIndex(): number {
@@ -217,7 +219,7 @@ constructor(private gameDataService: GameDataService, private router: Router) {}
       return hintLetters[letterIndex];
     }
   
-    return '';
+    return '-';
   }
   
   isWordCompleted(wordIndex: number): boolean {
