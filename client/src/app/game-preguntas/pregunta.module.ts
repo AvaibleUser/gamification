@@ -4,6 +4,7 @@ import { PreguntaComponent } from './components/pregunta/pregunta.component';
 import { CrearPreguntasComponent } from './components/crear-preguntas/crear-preguntas.component';
 import { ListadoPreguntasComponent } from './components/listado-preguntas/listado-preguntas.component';
 import { FormsModule } from '@angular/forms';
+import { CrearTriviaComponent } from './components/crear-trivia/crear-trivia.component';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     PreguntaComponent,
     CrearPreguntasComponent,
-    ListadoPreguntasComponent
+    ListadoPreguntasComponent,
+    CrearTriviaComponent
   ],
   imports: [
     CommonModule, 

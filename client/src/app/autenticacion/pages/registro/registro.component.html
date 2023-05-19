@@ -1,0 +1,55 @@
+<mat-sidenav-container fullscreen>
+   
+    <app-barra></app-barra>
+    <!-- end Barra de herramienta -->
+    <div class="container">
+
+
+        <h1>Registro</h1>
+        <div fxLayout="row" fxLayoutGap="40px " fxLayout.xs="column">
+            <div fxFlex="50" fxLayout="column">
+                <div fxLayout="row" fxLayoutGap="40px ">
+                    <mat-form-field fxFlex="100">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput type="text" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input matInput type="text" required>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field>
+                    <mat-label>Correo electronico</mat-label>
+                    <input matInput type="email" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Tipo</mat-label>
+                    <mat-select>
+                        <mat-option>
+                            Alumno
+                        </mat-option>
+                        <mat-option>
+                            Maestro
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Foto Url</mat-label>
+                    <input matInput type="url" required>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button color="primary">Guardar</button>
+            </div>
+            <div fxFlex="50">
+                <img alt="">
+            </div>
+        </div>
+    </div>
+</mat-sidenav-container>

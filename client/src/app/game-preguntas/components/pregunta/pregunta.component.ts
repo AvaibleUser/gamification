@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pregunta',
@@ -57,6 +58,9 @@ export class PreguntaComponent {
   intervalo: any;
   finalizado: boolean = false;
 
+  respuestasCorrectas:number=0; 
+  puntajeTotal:number=0;
+
   ngOnInit() {
     this.iniciarPregunta();
   }
@@ -82,24 +86,47 @@ export class PreguntaComponent {
   seleccionarRespuesta(respuesta: string) {
     // Detener el temporizador actual
     clearInterval(this.intervalo);
-
     // Lógica para verificar si la respuesta es correcta y realizar acciones correspondientes
-    if(this.preguntas[this.preguntaIndex].respuestaCorrecta===respuesta){
-      console.log(respuesta+' es igual a '+this.preguntas[this.preguntaIndex].respuestaCorrecta );
-    }else{
-      console.log(' no es corecta')
+    if (this.preguntas[this.preguntaIndex].respuestaCorrecta === respuesta) {
+      //console.log(respuesta + ' es igual a ' + this.preguntas[this.preguntaIndex].respuestaCorrecta);
+      this.respuestasCorrectas++; 
+      Swal.fire({
+        icon: 'success',
+        title: 'Respuesta correcta',
+        timer: 2000,
+        showConfirmButton: false
+      });
+    } else {
+      //console.log(' no es correcta');
+      Swal.fire({
+        icon: 'error',
+        title: 'Respuesta incorrecta',
+        text: `La respuesta correcta es: ${this.preguntas[this.preguntaIndex].respuestaCorrecta}`,
+        timer: 2000,
+        showConfirmButton: false
+      });
     }
-
+  
     // Avanzar a la siguiente pregunta
     this.preguntaIndex++;
     if (this.preguntaIndex < this.preguntas.length) {
       this.iniciarPregunta();
-      
     } else {
       // Aquí puedes manejar el caso de que no haya más preguntas disponibles
-      console.log('No hay más preguntas');
+      console.log('No hay más preguntas ',this.calcularPuntaje());
+      this.calcularPuntaje();
       this.finalizado = true;
-      //  this.router.navigate(['/fin-trivia']);
+      // this.router.navigate(['/fin-trivia']);
     }
+  }
+
+  calcularPuntaje() {
+    return (this.respuestasCorrectas / this.preguntas.length) * 100;
+  }
+  
+
+  getColorClass(index: number): string {
+    const colors = ['blue', 'yellow', 'red', 'lightblue'];
+    return colors[index % colors.length];
   }
 }

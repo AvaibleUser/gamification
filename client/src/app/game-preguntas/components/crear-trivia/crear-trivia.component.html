@@ -1,0 +1,84 @@
+<!-- <div class="row">
+    <div class="container col-6 text-light">
+        <h2>Crear Trivia</h2>
+        <form (submit)="crearTrivia()">
+            <div class="form-group">
+                <label>Código de Acceso:</label>
+                <input type="text" class="form-control" name="codigoAcceso" [(ngModel)]="codigoAcceso" required>
+            </div>
+            <div class="form-group">
+                <label>Autor:</label>
+                <input type="text" class="form-control" name="autor" [(ngModel)]="autor" required>
+            </div>
+            <div class="form-group">
+                <label>Preguntas:</label>
+                <button (click)="agregarPregunta()">Agregar Pregunta</button>
+                <div *ngFor="let pregunta of preguntas; let i = index" class="pregunta">
+                    <h4>Pregunta {{ i + 1 }}</h4>
+                    <label>Enunciado:</label>
+                    <input type="text" name="enunciado" [(ngModel)]="preguntas[i].enunciado" required>
+                    <label>Opciones:</label>
+                    <div *ngFor="let opcion of pregunta.opciones; let j = index">
+                        <input type="text" name="opciones" [(ngModel)]="preguntas[i].opciones[j]" required>
+                    </div>
+                    <label>Respuesta Correcta:</label>
+                    <select name="respuestaCorrecta" [(ngModel)]="preguntas[i].respuestaCorrecta" required>
+                        <option *ngFor="let opcion of pregunta.opciones; let j = index" [value]="j">{{ opcion }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit">Crear Trivia</button>
+        </form>
+    </div>
+</div> -->
+
+<div class="row">
+    <div class="container col-6 text-light">
+        <h3>Crear pregunta</h3>
+        <form (submit)="crearTrivia()">
+            <div class="form-group">
+                <label for="pregunta">Codigo:</label>
+                <input type="text" class="form-control" id="codigoAcceso" [(ngModel)]="codigoAcceso" name="codigoAcceso"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="pregunta">Autor:</label>
+                <input type="text" class="form-control" id="codigoAcceso" [(ngModel)]="codigoAcceso" name="codigoAcceso"
+                    required>
+            </div>
+            <div class="form-group">
+                <label>Preguntas:</label>
+                <button (click)="agregarPregunta()">Agregar Pregunta</button>
+                <div *ngFor="let pregunta of preguntas; let i = index" class="pregunta">
+                    <div class="form-group">
+                        <label for="pregunta">Enunciado: </label>
+                        <input type="text" class="form-control" id="enunciado" [(ngModel)]="preguntas[i].enunciado"
+                            name="pregunta" required>
+                    </div>
+                    <div class="form-group" *ngFor="let opcion of pregunta.opciones; let j = index">
+                        <label for="opciones">Respuesta {{i}}</label>
+                        <input type="text" class="form-control" id="respuestaCorrecta"
+                          [(ngModel)]="preguntas[i].opciones[j]" name="respuestaCorrecta" required
+                          (keydown)="onKeyDown($event)">
+                      </div>
+                      
+
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Crear pregunta</button>
+        </form>
+    </div>
+    <br>
+    <div class="container col-6 text-light">
+        <ul>
+            <li *ngFor="let pregunta of preguntas">
+                <h5>{{pregunta.enunciado}}</h5>
+                <ul>
+                    <li *ngFor="let res of pregunta.respuestas">{{res.texto}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
