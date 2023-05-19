@@ -18,9 +18,9 @@ export class RegistroComponent {
   };
   
   guardarUsuario() {
-    // Aquí puedes agregar la lógica para guardar el usuario en la base de datos
-    console.log(this.user); // Imprime el objeto `user` en la consola
-    // ...
+    // Aquí puedes agregar la lógica para guardar el usuario en la base de datos llamando al servicio autenticacion
+    console.log(this.user); 
+    
   }
 
 }
