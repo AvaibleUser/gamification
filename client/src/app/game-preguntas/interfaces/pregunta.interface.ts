@@ -1,13 +1,13 @@
-export interface Pregunta {
-    id?:        string;
-    enunciado: string;
-    tipo:      string;
-    codigo:    string;
-    respuestas:  Respuestas[];
+export interface Trivia {
+    id?:           number;
+    codigo:       string;
+    nombreTrivia: string;
+    autor:        string;
+    preguntas:    Pregunta[];
 }
 
-export interface Respuestas {
-    //id:       string;
-    texto:    string;
-    correcta: boolean;
+export interface Pregunta {
+    enunciado:         string;
+    respuestas:          string[];
+    respuestaCorrecta: string;
 }
