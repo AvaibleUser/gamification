@@ -16,6 +16,7 @@ import { GameTarjetaComponent } from './principal/game-tarjeta/game-tarjeta.comp
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BarraComponent } from './principal/barra/barra.component';
 
+import { FormsModule } from '@angular/forms';
 //import { PrincipalModule } from './principal/principal.module';
 
 
@@ -36,7 +37,8 @@ import { BarraComponent } from './principal/barra/barra.component';
     AppRoutingModule,
     FlexLayoutModule,
     PreguntaModule, BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
     
   ],
   providers: [],

@@ -11,41 +11,37 @@
                 <div fxLayout="row" fxLayoutGap="40px ">
                     <mat-form-field fxFlex="100">
                         <mat-label>Nombre</mat-label>
-                        <input matInput type="text" required>
-                    </mat-form-field>
-                    <mat-form-field>
+                        <input matInput type="text" name="name" [(ngModel)]="user.name" required>
+                      </mat-form-field>
+                      
+                      <mat-form-field>
                         <mat-label>Username</mat-label>
-                        <input matInput type="text" required>
-                    </mat-form-field>
+                        <input matInput type="text" [(ngModel)]="user.username" required>
+                      </mat-form-field>
                 </div>
 
                 <mat-form-field>
-                    <mat-label>Correo electronico</mat-label>
-                    <input matInput type="email" required>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
+                    <mat-label>Correo electrónico</mat-label>
+                    <input matInput type="email" [(ngModel)]="user.email" required>
+                  </mat-form-field>
+                  
+                  <mat-form-field>
                     <mat-label>Contraseña</mat-label>
-                    <input matInput type="password" required>
-                </mat-form-field>
+                    <input matInput type="password" [(ngModel)]="user.password" required>
+                  </mat-form-field>
                 <br>
                 <mat-form-field>
                     <mat-label>Tipo</mat-label>
-                    <mat-select>
-                        <mat-option>
-                            Alumno
-                        </mat-option>
-                        <mat-option>
-                            Maestro
-                        </mat-option>
+                    <mat-select [(ngModel)]="user.student">
+                      <mat-option [value]="true">Alumno</mat-option>
+                      <mat-option [value]="false">Maestro</mat-option>
                     </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Foto Url</mat-label>
-                    <input matInput type="url" required>
-                </mat-form-field>
+                  </mat-form-field>
+                
                 <br>
-                <button mat-raised-button color="primary">Guardar</button>
+                <!-- <button mat-raised-button color="primary">Guardar</button> -->
+                <button mat-raised-button color="primary" (click)="guardarUsuario()">Guardar</button>
+
             </div>
             <div fxFlex="50">
                 <img alt="">
