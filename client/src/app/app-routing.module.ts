@@ -8,10 +8,12 @@ const routes: Routes = [
   { path: 'juego', component: GameOneComponent },
   { path: 'inicio', component: GameInicioComponent},
   { path: 'ranking', component: GameRankingComponent },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
+
 })
 export class AppRoutingModule { }

@@ -7,6 +7,7 @@ import { GameOneComponent } from './game-one/game-one/game-one.component';
 import { GameInicioComponent } from './game-one/game-inicio/game-inicio.component';
 import { GameRankingComponent } from './game-one/game-ranking/game-ranking.component';
 import { GameDataService } from './game-one/game-data.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -15,7 +16,8 @@ import { GameDataService } from './game-one/game-data.service';
     AppComponent,
     GameOneComponent,
     GameInicioComponent,
-    GameRankingComponent
+    GameRankingComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
