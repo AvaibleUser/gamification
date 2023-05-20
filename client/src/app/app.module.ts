@@ -8,6 +8,9 @@ import { GameInicioComponent } from './game-one/game-inicio/game-inicio.componen
 import { GameRankingComponent } from './game-one/game-ranking/game-ranking.component';
 import { GameDataService } from './game-one/game-data.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { GameTwoComponent } from './gameTwo/game-two/game-two.component';
+import { GameSopaComponent } from './gameTwo/game-sopa/game-sopa.component';
+
 
 
 
@@ -17,7 +20,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     GameOneComponent,
     GameInicioComponent,
     GameRankingComponent,
-    NavbarComponent
+    NavbarComponent,
+    GameTwoComponent,
+    GameSopaComponent,
   ],
   imports: [
     BrowserModule,
