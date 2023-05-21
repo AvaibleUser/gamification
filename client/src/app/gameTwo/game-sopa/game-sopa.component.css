@@ -9,7 +9,11 @@
 
 .game-container {
   text-align: center;
-  margin-top: 5px; 
+  margin-top: -80px; 
+  display: flex; /* Alinea los elementos en línea */
+  justify-content: space-between;
+  padding: 100px;
+  
 }
 
 .header {
@@ -39,10 +43,11 @@
 ul {
   list-style: none;
   padding: 0;
+  display: block;
 }
 
 li {
-  display: inline-block;
+  display: block;
   padding: 5px;
   margin: 5px;
   font-weight: bold;
@@ -95,7 +100,8 @@ h3:only-child {
 }
 
 .found-words {
-  color: #6b21ab;
+  color: #ffffff;
+
 }
 .game-container > h3 {
   margin-top: 0;
@@ -104,14 +110,39 @@ h3:only-child {
   color: black;
 }
 
-.words-container {
-  background-color: #FFFFFF; /* Fondo blanco */
-  padding: 10px; /* Espaciado interno para el contenido */
-  display: inline-block;
-  border-radius: 10px;
+.orden {
+ font-size: 28px;
+ font-weight: bold;
+ color: black;
 }
 
-.words-container .encuentra {
-  font-size: 28px; /* Tamaño de letra */
-  font-weight: bold; /* Negrita */
+.words-container {
+  background-color: #FFFFFF;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  margin-top: 5px;
 }
+
+.words-container h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+}
+
+.words-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.words-container li {
+  display: inline;
+  padding: 5px;
+  margin: 2px;
+  font-weight: bold;
+}
+

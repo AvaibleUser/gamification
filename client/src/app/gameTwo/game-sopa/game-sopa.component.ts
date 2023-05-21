@@ -11,7 +11,7 @@ export class GameSopaComponent {
   letters: string[][] = [];
 
   //Arreglo que tiene las palabras
-  wordsToFind: string[] = ['DOG', 'CAT', 'BIRD'];
+  wordsToFind: string[] = ['DOG', 'CAT', 'SOFTWARE'];
   selectedLetters: { row: number, col: number }[] = [];
   foundWords: string[] = []; // Palabras encontradas
   gameFinished = false;
