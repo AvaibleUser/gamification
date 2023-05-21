@@ -10,6 +10,7 @@ import { GameDataService } from './game-one/game-data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { GameTwoComponent } from './gameTwo/game-two/game-two.component';
 import { GameSopaComponent } from './gameTwo/game-sopa/game-sopa.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -26,7 +27,8 @@ import { GameSopaComponent } from './gameTwo/game-sopa/game-sopa.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [GameDataService],
   bootstrap: [AppComponent]
