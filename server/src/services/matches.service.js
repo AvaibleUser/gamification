@@ -33,7 +33,7 @@ async function saveMatch(game, creator, state) {
 async function updateOneMatch(_id, state) {
   const updatedMatch = await matchesModel.findByIdAndUpdate(
     _id,
-    { state },
+    { state: { ...state } },
     { new: true }
   );
 
@@ -67,6 +67,29 @@ async function addPlayer(_id, username, guest, points) {
 /**
  * @param {ObjectId} _id
  * @param {string} username
+ * @param {string} points
+ */
+async function updatePlayerPoints(_id, username, points) {
+  const match = await matchesModel.findOneAndUpdate(
+    {
+      _id,
+      "players.username": { $ne: username },
+      "players.guest": { $ne: guest },
+    },
+    { "players.$.points": { points } },
+    { new: true }
+  );
+
+  if (!match) {
+    throw new Error("El jugador no existe aun");
+  }
+
+  return match.players;
+}
+
+/**
+ * @param {ObjectId} _id
+ * @param {string} username
  * @param {string} content
  */
 async function addChatMessage(_id, username, content) {
@@ -85,5 +108,6 @@ module.exports = {
   saveMatch,
   updateOneMatch,
   addPlayer,
+  updatePlayerPoints,
   addChatMessage,
 };

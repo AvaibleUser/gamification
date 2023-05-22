@@ -5,12 +5,13 @@ const {
   updateOneMatch,
   addPlayer,
   addChatMessage,
+  updatePlayerPoints,
 } = require("../services/matches.service");
 const mongoose = require("mongoose");
 
 function getObjectId(id) {
   if (typeof id === "string") {
-    return new mongoose.Types.ObjectId(_id);
+    return new mongoose.Types.ObjectId(id);
   }
   return id;
 }
@@ -44,6 +45,26 @@ async function getMatch(req, res) {
 
   if (match) {
     res.json(match);
+  } else {
+    res.status(404).send(`No se encontro la partida ${_id}`);
+  }
+}
+
+/**
+ * @param {Request} req
+ * @param {Response} res
+ */
+async function getMatchState(req, res) {
+  const { _id } = req.params;
+
+  if (!_id) {
+    return res.status(400).send("Se debe de enviar el id de la partida");
+  }
+
+  const match = await findOneMatch(getObjectId(_id));
+
+  if (match?.state) {
+    res.json(match.state);
   } else {
     res.status(404).send(`No se encontro la partida ${_id}`);
   }
@@ -122,6 +143,29 @@ async function addPlayerToTheMatch(req, res) {
  * @param {Request} req
  * @param {Response} res
  */
+async function changePlayerPoints(req, res) {
+  const { _id, username, points } = req.body;
+
+  const id = getObjectId(_id);
+
+  if (!id || !username || isNaN(points ?? undefined)) {
+    return res
+      .status(400)
+      .send(
+        "Se debe de mandar un objeto con el id de la partida " +
+          "y el nombre del usuario "
+      );
+  }
+
+  await updatePlayerPoints(id, username, points);
+
+  res.status(201).send("Se agrego al usuario al juego en curso");
+}
+
+/**
+ * @param {Request} req
+ * @param {Response} res
+ */
 async function postChatMessage(req, res) {
   const { _id, username, content } = req.body;
 
@@ -144,8 +188,10 @@ async function postChatMessage(req, res) {
 module.exports = {
   getAllMatches,
   getMatch,
+  getMatchState,
   createMatch,
   updateMatch,
   addPlayerToTheMatch,
+  changePlayerPoints,
   postChatMessage,
 };
