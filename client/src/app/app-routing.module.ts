@@ -12,6 +12,7 @@ import { HomeComponent } from "./principal/home/home.component";
 import { LoginComponent } from './autenticacion/pages/login/login.component';
 import { RegistroComponent } from './autenticacion/pages/registro/registro.component';
 import { CrearTriviaComponent } from './game-preguntas/components/crear-trivia/crear-trivia.component';
+import { InicioComponent} from "./principal/inicio/inicio.component";
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'ranking', component: GameRankingComponent },
   { path: 'sopa', component: GameTwoComponent },
   { path: 'playsopa', component: GameSopaComponent },
+  { path: 'welcome', component: InicioComponent},
 
 //Juego de crear palabras
   { path: '', component: HomeComponent }, 
@@ -30,6 +32,8 @@ const routes: Routes = [
   {path: 'registro', component: RegistroComponent  },
   {path: 'crear', component: CrearTriviaComponent  },
   { path: '**', component: HomeComponent }, 
+
+  
 ];
 
 @NgModule({

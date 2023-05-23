@@ -1,8 +1,4 @@
 <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
     <span class="example-spacer"></span>
     <span class="spacer"></span>
     <button mat-button [routerLink]="['/home']" >
@@ -17,7 +13,7 @@
       Registrarse
       <mat-icon>account_circle</mat-icon>
     </button> 
-    <button mat-button >
+    <button mat-button [routerLink]="['/welcome']">
       <mat-icon>power_settings_new</mat-icon>
     </button>    
   </mat-toolbar>

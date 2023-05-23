@@ -1,7 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: purple;
+  padding: 20px;
+}
+
 .container {
     background-color: purple;
     color: white;
-    height: 100vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -25,6 +25,8 @@ import { GameTarjetaComponent } from './principal/game-tarjeta/game-tarjeta.comp
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BarraComponent } from './principal/barra/barra.component';
+import { InicioComponent } from './principal/inicio/inicio.component';
+import { NavJuegosComponent } from './principal/nav-juegos/nav-juegos.component';
 
 
 //import { PrincipalModule } from './principal/principal.module';
@@ -44,7 +46,9 @@ import { BarraComponent } from './principal/barra/barra.component';
     HomeComponent,
     ListadoGamesComponent,
     GameTarjetaComponent,
-    BarraComponent
+    BarraComponent,
+    InicioComponent,
+    NavJuegosComponent
     
 
   ],
