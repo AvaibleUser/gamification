@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -61,7 +61,8 @@ import { NavJuegosComponent } from './principal/nav-juegos/nav-juegos.component'
     PreguntaModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule    
+    FormsModule,
+    HttpClientModule    
   ],
   providers: [GameDataService],
   bootstrap: [AppComponent]
