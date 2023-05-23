@@ -6,11 +6,11 @@
 {
   name: string,
   username: string, // unique
-  password: string, // ver jwt
-  student: boolean,
-  wins: number,
-  deleted: boolean,
-  playedGames: [
+  password: string,
+  student?: boolean, // si no va se settea a true
+  wins?: number,
+  deleted?: boolean,
+  playedGames?: [
     {
       game: string,
       wins: number,
@@ -26,7 +26,7 @@
   name: string,
   description: string,
   image: string,
-  wonBy: [
+  wonBy?: [
     {
       username: string,
       date: date,
@@ -41,16 +41,16 @@
 {
   name: string,
   description: string,
-  image: string,
-  url: string,
+  image: FormData, // debe de ir como formdata, no se guarda en mongo
+  url: string, // se generara asi que no se envia
   maxPlayers: number,
-  comments: [
+  comments?: [
     {
       username: string,
       content: string,
       createdAt: date,
       stars: number,
-    }
+    } // estructura de los objetos en el array
   ]
 }
 ```
@@ -61,23 +61,23 @@
 {
   game: string,
   creator: string,
-  createdAt: date,
-  gameTime: number,
-  players: [
+  createdAt: date, // se generara solo, no se envia
+  gameTime?: number,
+  players?: [
     {
       username: string, // tendria unique
-      guest: boolean,
-      points: number,
-    }
+      guest: boolean, // si no va se pone como true
+      points: number, // si no va se pone como 0
+    } // estructura de los objetos en el array
   ]
-  chat: [
+  chat?: [
     {
       username: string,
       content: string,
-      createdAt: date,
-    }
+      createdAt: date, // se generara solo, no se envia
+    } // estructura de los objetos en el array
   ]
-  state: object, // toda la informacion del juego especifico, ejemplo:
+  state?: object, // toda la informacion del juego especifico, ejemplo:
       crucigrama: palabras usadas en el juego, posicion de las palabras,
         palabras sin seleccionar, palabras seleccionadas, etc.
 }
@@ -86,7 +86,7 @@
 ## Rankings
 
 ```
-{
+{ // no tiene rutas porque me queria ahorrar el tiempo en lo que miraba como se iba a utilizar
   game: string,
   creator: string,
   finishedAt: date,

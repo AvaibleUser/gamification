@@ -20,7 +20,6 @@ const gamesSchema = new Schema({
     unique: [true, "El nombre del juego ya esta en uso"],
   },
   description: { type: String, required: true },
-  image: { type: String, required: true },
   url: { type: String, required: true },
   maxPlayers: { type: Number, required: true },
   comments: [commentsSchema],

@@ -18,12 +18,11 @@ async function findOneGame(name) {
 /**
  * @param {string} name
  * @param {string} description
- * @param {string} image
  * @param {string} url
  * @param {number} maxPlayers
  */
-async function saveGame(name, description, image, url, maxPlayers) {
-  await gamesModel.create({ name, description, image, url, maxPlayers });
+async function saveGame(name, description, url, maxPlayers) {
+  await gamesModel.create({ name, description, url, maxPlayers });
 
   return true;
 }
@@ -32,7 +31,6 @@ async function saveGame(name, description, image, url, maxPlayers) {
  * @param {{
  *   name: string;
  *   description: string?;
- *   image: string?;
  *   url: string?;
  *   maxPlayers: number?;
  * }} game
