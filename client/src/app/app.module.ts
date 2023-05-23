@@ -17,6 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BarraComponent } from './principal/barra/barra.component';
 
 import { FormsModule } from '@angular/forms';
+import { InicioPreguntasComponent } from './game-preguntas/inicio-preguntas/inicio-preguntas.component';
+import { CrearPreguntasComponent } from './game-preguntas/components/crear-preguntas/crear-preguntas.component';
 //import { PrincipalModule } from './principal/principal.module';
 
 
@@ -28,7 +30,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ListadoGamesComponent,
     GameTarjetaComponent,
-    BarraComponent
+    BarraComponent, 
+    InicioPreguntasComponent,
+    CrearPreguntasComponent
     
 
   ],
@@ -36,7 +40,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
-    PreguntaModule, BrowserAnimationsModule,
+    PreguntaModule, 
+    BrowserAnimationsModule,
     MaterialModule,
     FormsModule
     

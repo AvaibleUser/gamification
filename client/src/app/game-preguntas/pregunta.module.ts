@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PreguntaComponent } from './components/pregunta/pregunta.component';
-import { CrearPreguntasComponent } from './components/crear-preguntas/crear-preguntas.component';
+//import { CrearPreguntasComponent } from './components/crear-preguntas/crear-preguntas.component';
 import { ListadoPreguntasComponent } from './components/listado-preguntas/listado-preguntas.component';
 import { FormsModule } from '@angular/forms';
 import { CrearTriviaComponent } from './components/crear-trivia/crear-trivia.component';
+//import { InicioPreguntasComponent } from './inicio-preguntas/inicio-preguntas.component';
+import { MaterialModule } from '../material/material.module';
+
 
 
 
@@ -12,15 +15,18 @@ import { CrearTriviaComponent } from './components/crear-trivia/crear-trivia.com
 @NgModule({
   declarations: [
     PreguntaComponent,
-    CrearPreguntasComponent,
+    //CrearPreguntasComponent,
     ListadoPreguntasComponent,
-    CrearTriviaComponent
+    CrearTriviaComponent,
+    //InicioPreguntasComponent
   ],
   imports: [
     CommonModule, 
-    FormsModule
+    FormsModule, 
+    MaterialModule, 
     
   ],
-  exports: [PreguntaComponent]
+  exports: [PreguntaComponent,
+  ]
 })
 export class PreguntaModule { }

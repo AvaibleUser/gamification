@@ -6,6 +6,7 @@ import { HomeComponent } from "./principal/home/home.component";
 import { LoginComponent } from './autenticacion/pages/login/login.component';
 import { RegistroComponent } from './autenticacion/pages/registro/registro.component';
 import { CrearTriviaComponent } from './game-preguntas/components/crear-trivia/crear-trivia.component';
+import { InicioPreguntasComponent } from './game-preguntas/inicio-preguntas/inicio-preguntas.component';
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent  },
   {path: 'registro', component: RegistroComponent  },
   {path: 'crear', component: CrearTriviaComponent  },
+  {path: 'inicio-preguntas', component: InicioPreguntasComponent  },
   { path: '**', component: HomeComponent }, 
 
 ];
