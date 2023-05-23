@@ -1,21 +1,39 @@
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const cors = require("cors");
 const config = require("dotenv").config;
 
-const { configMongoose } = require("./config/mongo.config");
-const { morganConfig } = require("./config/morgan.config");
+const { configMongoose } = require("./src/config/mongo.config");
+const { morganConfig } = require("./src/config/morgan.config");
+const { errorsMiddleware } = require("./src/middleware/errors.middleware");
+
+const { gamesRoutes } = require("./src/routes/games.route");
+const { matchesRoutes } = require("./src/routes/matches.route");
+const { medalsRoutes } = require("./src/routes/medals.route");
+const { usersRoutes } = require("./src/routes/users.route");
 
 const app = express();
 
 config();
 
-// configurating mongoose
+// configuracion de mongoose
 const url = process.env.MONGODB_URI || "url";
 configMongoose(url);
 
+// agregado de configuraciones como middleware
+app.use(fileUpload());
 app.use(cors());
 app.use(express.json());
 app.use(morganConfig());
+
+// agregado de rutas
+app.use("/games", gamesRoutes);
+app.use("/matches", matchesRoutes);
+app.use("/medals", medalsRoutes);
+app.use("/users", usersRoutes);
+
+// agregado de middlewares
+app.use(errorsMiddleware);
 
 const PORT = process.env.PORT || 3001;
 
