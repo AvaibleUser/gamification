@@ -1,10 +1,11 @@
+<br>
 <h1>Juegos</h1>
 <mat-divider></mat-divider>
 <br>
 <div fxLayout="row wrap"
     fxLayout.xs="column"
     fxLayoutAlign="start start"
-    fxLayoutGap="20px">
+    fxLayoutGap="10px">
     <div fxFlexFill fxFlex="25"
         fxFlex.lg="25"
         fxFlex.sm="40"
@@ -45,14 +46,14 @@
             </mat-card-actions>
         </mat-card>
     </div>
-    <div fxFlexFill fxFlex="25"
-        fxFlex.lg="25"
+    <div fxFlexFill fxFlex="35"
+        fxFlex.lg="20"
         fxFlex.sm="40"
         >
-        <mat-card style="height: 400px;">
+        <mat-card style="height: 350px;">
             <mat-card-header>
                 <mat-card-title>Sopa de letras</mat-card-title>
-                <mat-card-subtitle>ChatGPT
+                <mat-card-subtitle>Letras
 
                     La sopa de letras es un juego de palabras donde debes encontrar palabras escondidas en una cuadrícula de letras.</mat-card-subtitle>
             </mat-card-header>
@@ -61,12 +62,29 @@
                 <button mat-button color="warn">
                     Leer más..
                 </button>
-                <button mat-button color="info">
-                    Jugar
-                </button>
+                <button mat-button color="info" routerLink="/sopa">Jugar</button>
             </mat-card-actions>
         </mat-card>
     </div>
     
+    <div fxFlexFill fxFlex="40"
+    fxFlex.lg="20"
+    fxFlex.sm="40"
+    >
+        <mat-card style="height: 300px;">
+            <mat-card-header>
+                <mat-card-title>Mesclador de Palabras</mat-card-title>
+                <mat-card-subtitle>MixWord
+                    Aprenda nuevas palabras y practique habilidades para resolver problemas cuando juegue Mix Word.</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/Mix.png">
+            <mat-card-actions>
+                <button mat-button color="warn">
+                    Leer más..
+                </button>
+                <button mat-button color="info" routerLink="/juego">Jugar</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
 </div>
 
