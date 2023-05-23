@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,11 +30,15 @@ import { InicioComponent } from './principal/inicio/inicio.component';
 import { NavJuegosComponent } from './principal/nav-juegos/nav-juegos.component';
 
 
-import { FormsModule } from '@angular/forms';
+//import { FormsModule } from '@angular/forms';
 import { InicioPreguntasComponent } from './game-preguntas/inicio-preguntas/inicio-preguntas.component';
 import { CrearPreguntasComponent } from './game-preguntas/components/crear-preguntas/crear-preguntas.component';
 //import { PrincipalModule } from './principal/principal.module';
 
+import { FormsModule } from '@angular/forms';
+import { MatchComponent } from './components/match/match.component';
+import { CrosswordsModule } from './crosswords/crosswords.module';
+import { MatchCreatorComponent } from './components/match-creator/match-creator.component';
 
 @NgModule({
   declarations: [
@@ -54,9 +59,11 @@ import { CrearPreguntasComponent } from './game-preguntas/components/crear-pregu
     CrearPreguntasComponent,
     BarraComponent,
     InicioComponent,
-    NavJuegosComponent
+    NavJuegosComponent,
     
 
+    MatchComponent,
+    MatchCreatorComponent
   ],
  
   imports: [
@@ -68,7 +75,11 @@ import { CrearPreguntasComponent } from './game-preguntas/components/crear-pregu
     PreguntaModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule    
+    FormsModule  ,  
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    CrosswordsModule,
   ],
   providers: [GameDataService],
   bootstrap: [AppComponent]

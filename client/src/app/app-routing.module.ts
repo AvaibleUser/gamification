@@ -1,5 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+<<<<<<< HEAD
 import { GameOneComponent } from './game-one/game-one/game-one.component';
 import { GameInicioComponent } from './game-one/game-inicio/game-inicio.component';
 import { GameRankingComponent } from './game-one/game-ranking/game-ranking.component';
@@ -40,11 +41,30 @@ const routes: Routes = [
   { path: '**', component: HomeComponent }, 
 
   
+=======
+import { MatchComponent } from './components/match/match.component';
+import { CreatorComponent } from './crosswords/components/creator/creator.component';
+import { MatchCreatorComponent } from './components/match-creator/match-creator.component';
+
+const routes: Routes = [
+  {
+    path: 'match/:id',
+    component: MatchComponent,
+  },
+  {
+    path: 'match',
+    component: MatchCreatorComponent,
+  },
+>>>>>>> remotes/origin/backend-base
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+<<<<<<< HEAD
   exports: [RouterModule]
 
+=======
+  exports: [RouterModule],
+>>>>>>> remotes/origin/backend-base
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

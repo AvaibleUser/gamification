@@ -21,10 +21,14 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
+<<<<<<< HEAD
     "bootstrap": "^5.2.3",
     "bootstrap": "^5.3.0-alpha3",
     "primeicons": "^6.0.1",
     "primeng": "^16.0.0-rc.1",
+=======
+    "@tailwindcss/typography": "^0.5.9",
+>>>>>>> remotes/origin/backend-base
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.7.5",
     "tslib": "^2.3.0",
