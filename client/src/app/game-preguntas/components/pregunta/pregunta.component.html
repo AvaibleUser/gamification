@@ -1,7 +1,8 @@
 <!-- <mat-sidenav-container fullscreen> -->
   <!-- <app-barra></app-barra> -->
- <div class="container bg-dark border-right">
-   <h3 class="text-light">{{ preguntaActual.enunciado }}</h3>
+ <div  class="container bg-dark border-right">
+  <div *ngIf="!finalizado">
+    <h3 class="text-light">{{ preguntaActual.enunciado }}</h3>
    <p class="text-light">Tiempo restante: {{ tiempoRestante }} segundos</p>
    <hr class="text-white">
    <div class="list-group list-reset">
@@ -11,15 +12,14 @@
          {{ respuesta }}
        </a>
      </ng-container>
-
    </div>
+  </div>
    <div *ngIf="finalizado" class="container bg-dark border-right">
      <h3 class="text-light">Resultados</h3>
      <p class="text-light">Preguntas contestadas: {{ preguntaIndex }}</p>
      <p class="text-light">Respuestas correctas: {{ respuestasCorrectas }}</p>
      <p class="text-light">Puntaje: {{ calcularPuntaje()| number:'1.2-2' }}</p>
    </div>
-
    <div>
      <button (click)="salir()" class="btn btn-danger">Salir</button>
    </div>

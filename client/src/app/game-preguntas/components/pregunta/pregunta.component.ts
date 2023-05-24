@@ -3,6 +3,8 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Pregunta, Trivia } from '../../interfaces/pregunta.interface';
+import { UserService } from '../../../autenticacion/services/user.service';
+import { User } from 'src/app/autenticacion/user/user.interface';
 
 @Component({
   selector: 'app-pregunta',
@@ -12,6 +14,7 @@ import { Pregunta, Trivia } from '../../interfaces/pregunta.interface';
 export class PreguntaComponent {
 
   //@Input('trivia') 
+  currentUser: User | undefined;
   
   trivia!:Trivia;
   
@@ -63,7 +66,7 @@ export class PreguntaComponent {
   //     // Resto de las preguntas
   //   ]
   // }
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute, private userService :UserService) {}
 
   preguntaActual: any;
   preguntaIndex: number = 0;
@@ -74,13 +77,7 @@ export class PreguntaComponent {
   respuestasCorrectas:number=0; 
   puntajeTotal:number=0;
 
-  // ngOnInit() {
-  //   // this.trivia = this.route.snapshot.data.trivia;
-  //   // this.trivia = this.route.snapshot.state?.trivia;
-  //   console.log(this.trivia);
-    
-  //   //this.iniciarPregunta();
-  // }
+  
   ngOnInit() {
     const triviaString = this.route.snapshot.paramMap.get('trivia');
     if (triviaString) {
@@ -88,7 +85,7 @@ export class PreguntaComponent {
       console.log('hola', this.trivia);
       this.iniciarPregunta();
     }
-    // Resto del código...
+    
   }
   
 

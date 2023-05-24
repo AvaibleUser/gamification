@@ -3,6 +3,7 @@ import { AutenticationService } from '../../autentication.service';
 import { User } from '../../user/user.interface';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
   password?: string;
   user: User | undefined;
 
-  constructor(private authService: AutenticationService, private router: Router) { }
+  constructor(private authService: AutenticationService, private router: Router,private userService: UserService) { }
 
   login() {
     if (!this.username || !this.password) {
@@ -30,7 +31,7 @@ export class LoginComponent {
           console.log('Inicio de sesión exitoso', this.user);
 
           const message = `Bienvenido, ${this.user.name} (${this.user.username})`;
-          //this.userService.setCurrentUser(this.user);
+          this.userService.setCurrentUser(this.user);
           //alert(message);
           Swal.fire({
             icon: 'success',
