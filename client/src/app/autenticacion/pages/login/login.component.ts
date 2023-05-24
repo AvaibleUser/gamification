@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AutenticationService } from '../../autentication.service';
 import { User } from '../../user/user.interface';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -30,19 +29,13 @@ export class LoginComponent {
           console.log('Inicio de sesión exitoso', this.user);
 
           const message = `Bienvenido, ${this.user.name} (${this.user.username})`;
-          //this.userService.setCurrentUser(this.user);
-          //alert(message);
-          Swal.fire({
-            icon: 'success',
-            title: message,
-            timer: 2000,
-            showConfirmButton: false
-          });
+
+          alert(message);
 
           if (this.user.student) {
-            this.router.navigate(['/homeStudent']);
+            this.router.navigate(['/estudiante']);
           } else {
-            this.router.navigate(['/homeProfesor']);
+            this.router.navigate(['/profesor']);
           }
         },
         error => {

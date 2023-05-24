@@ -13,6 +13,7 @@ import { GameSopaComponent } from './gameTwo/game-sopa/game-sopa.component';
 import { PreguntaComponent } from './game-preguntas/components/pregunta/pregunta.component';
 import { CrearPreguntasComponent } from './game-preguntas/components/crear-preguntas/crear-preguntas.component';
 import { CrearTriviaComponent } from './game-preguntas/components/crear-trivia/crear-trivia.component';
+import { PalabrasComponent } from './gameTwo/palabras/palabras.component';
 
 //Login y registro
 import { LoginComponent } from './autenticacion/pages/login/login.component';
@@ -29,7 +30,6 @@ import { NavStudComponent } from './principal/studentVisual/nav-stud/nav-stud.co
 import { NavGuestComponent } from './principal/guestVisual/nav-guest/nav-guest.component';
 import { ListadoGamesComponent } from './principal/listado-games/listado-games.component';
 import { GetInMatchComponent } from './components/get-in-match/get-in-match.component';
-import { InicioPreguntasComponent } from './game-preguntas/inicio-preguntas/inicio-preguntas.component';
 
 const routes: Routes = [
   {
@@ -82,7 +82,6 @@ const routes: Routes = [
   { path: 'crear-preguntas', component: CrearPreguntasComponent },
   { path: 'home', component: HomeComponent },
   { path: 'crear', component: CrearTriviaComponent },
-  { path: 'inicio-preguntas', component: InicioPreguntasComponent },
   { path: '**', redirectTo: 'welcome' },
 ];
 

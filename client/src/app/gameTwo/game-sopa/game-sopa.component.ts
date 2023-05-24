@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input  } from '@angular/core';
 
 @Component({
   selector: 'app-game-sopa',
@@ -9,7 +9,7 @@ export class GameSopaComponent {
   size = 10; // Tamaño del tablero
   alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Alfabeto para generar letras aleatorias
   letters: string[][] = [];
-
+//  @Input() wordsToFind: string[] = [];
   //Arreglo que tiene las palabras
   wordsToFind: string[] = ['DOG', 'CAT', 'SOFTWARE'];
   selectedLetters: { row: number, col: number }[] = [];
@@ -20,7 +20,9 @@ export class GameSopaComponent {
   //Variables para el tiempo
   timeElapsed = 0; // Tiempo transcurrido en segundos
   timerInterval: any; // Variable para almacenar el intervalo del temporizador
-
+  
+  
+  
   constructor() {}
   
   ngOnInit(): void {

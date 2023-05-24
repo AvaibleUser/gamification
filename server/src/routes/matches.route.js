@@ -5,6 +5,7 @@ const matchesRoutes = Router();
 
 matchesRoutes.get("", matchesController.getAllMatches);
 matchesRoutes.get("/:_id", matchesController.getMatch);
+matchesRoutes.get("/:_id/error", matchesController.getMatchError);
 matchesRoutes.get("/:_id/state", matchesController.getMatch);
 matchesRoutes.post("", matchesController.createMatch);
 matchesRoutes.put("", matchesController.updateMatch);

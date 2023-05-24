@@ -12,8 +12,11 @@ const { matchesRoutes } = require("./src/routes/matches.route");
 const { medalsRoutes } = require("./src/routes/medals.route");
 const { usersRoutes } = require("./src/routes/users.route");
 const { publicRoutes } = require("./src/routes/public.route");
+<<<<<<< HEAD
 
 const triviaRoutes = require('./src/routes/trivia.route');
+=======
+>>>>>>> remotes/origin/gameMixWords
 
 const app = express();
 
@@ -35,7 +38,10 @@ app.use("/matches", matchesRoutes);
 app.use("/medals", medalsRoutes);
 app.use("/users", usersRoutes);
 app.use("/public", publicRoutes);
+<<<<<<< HEAD
 app.use('/trivia', triviaRoutes);
+=======
+>>>>>>> remotes/origin/gameMixWords
 
 // agregado de middlewares
 app.use(errorsMiddleware);

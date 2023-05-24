@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+
 import { MatchComponent } from './components/match/match.component';
 import { CrosswordsModule } from './crosswords/crosswords.module';
 import { MatchCreatorComponent } from './components/match-creator/match-creator.component';
@@ -37,9 +40,9 @@ import { VisualJuegosComponent } from './principal/visual-juegos/visual-juegos.c
 import { CommonModule } from '@angular/common';
 import { NavGuestComponent } from './principal/guestVisual/nav-guest/nav-guest.component';
 import { GetInMatchComponent } from './components/get-in-match/get-in-match.component';
+import { PalabrasComponent } from './gameTwo/palabras/palabras.component';
 import { InicioPreguntasComponent } from './game-preguntas/inicio-preguntas/inicio-preguntas.component';
 import { CrearPreguntasComponent } from './game-preguntas/components/crear-preguntas/crear-preguntas.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +54,7 @@ import { CrearPreguntasComponent } from './game-preguntas/components/crear-pregu
     NavbarComponent,
     GameTwoComponent,
     GameSopaComponent,
+    PalabrasComponent,
     LoginComponent,
     RegistroComponent,
     HomeComponent,
@@ -74,6 +78,7 @@ import { CrearPreguntasComponent } from './game-preguntas/components/crear-pregu
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    
     FormsModule,
     CrosswordsModule,
     CommonModule,
@@ -85,6 +90,8 @@ import { CrearPreguntasComponent } from './game-preguntas/components/crear-pregu
     MaterialModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [GameDataService],
   bootstrap: [AppComponent],
