@@ -25,10 +25,31 @@ export class MatchesService {
   }
 
   createMatch(game: string, state: any) {
-    return this.http.post<Match>(`${this.baseUrl}/`, { game, state, creator: 'a' });
+    return this.http.post<Match>(`${this.baseUrl}/`, {
+      game,
+      state,
+      creator: 'a',
+    });
+  }
+
+  addPlayer(_id: string, username: string, guest?: boolean, points?: number) {
+    return this.http.post<void>(`${this.baseUrl}/players`, {
+      _id,
+      username,
+      guest,
+      points,
+    });
   }
 
   updateMatchState(_id: string, state: any) {
     return this.http.put<Match>(`${this.baseUrl}/`, { _id, state });
+  }
+
+  updatePlayerPoints(_id: string, username: string, points: number) {
+    return this.http.put<void>(`${this.baseUrl}/players`, {
+      _id,
+      username,
+      points,
+    });
   }
 }

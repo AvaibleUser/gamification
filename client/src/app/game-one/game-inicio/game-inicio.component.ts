@@ -114,7 +114,7 @@ constructor(private gameDataService: GameDataService, private router: Router) {}
       this.router.navigate(['/ranking']);
     } else {
       // Cambiar al siguiente jugador
-      this.moveToNextPlayer();
+      // this.moveToNextPlayer();
     }
   }
   

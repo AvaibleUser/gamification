@@ -12,14 +12,13 @@ import { Hint } from 'src/model/interfaces/hint.interface';
 export class BoardComponent {
   gridCols = 'grid-cols-20';
   actualLetter?: Letter;
+  begin = new Date();
 
   @Input() id!: string;
   @Input() letters!: (Letter | undefined)[];
   @Input() hints!: Hint[];
 
-  @Output() winned = new EventEmitter<void>();
-
-  constructor(private matchesService: MatchesService) {}
+  @Output() winned = new EventEmitter<number>();
 
   public get classes(): string[] {
     return ['grid', 'gap-1', 'm-2', this.gridCols];
@@ -57,7 +56,8 @@ export class BoardComponent {
     }
 
     if (this.hints.every(({ answered }) => answered)) {
-      this.winned.emit();
+      const points = 10_00_000_000 / (+new Date() - +this.begin);
+      this.winned.emit(points);
     }
   }
 

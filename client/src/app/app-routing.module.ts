@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MatchComponent } from './components/match/match.component';
 import { MatchCreatorComponent } from './components/match-creator/match-creator.component';
@@ -19,7 +19,6 @@ import { LoginComponent } from './autenticacion/pages/login/login.component';
 import { RegistroComponent } from './autenticacion/pages/registro/registro.component';
 
 //Paginas de inicio
-import { InicioComponent } from './principal/inicio/inicio.component';
 import { HomeComponent } from './principal/home/home.component';
 import { StudentComponent } from './principal/studentVisual/student/student.component';
 import { AdminComponent } from './principal/adminVisual/admin/admin.component';

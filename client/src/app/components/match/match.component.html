@@ -4,5 +4,6 @@
     [id]="id"
     [letters]="match?.state?.letters"
     [hints]="match?.state?.hints"
+    (winned)="updatePoints($event)"
   ></app-board>
 </ng-container>

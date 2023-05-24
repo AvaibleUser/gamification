@@ -47,4 +47,10 @@ export class MatchComponent implements OnInit {
       },
     });
   }
+
+  updatePoints(points: number) {
+    this.matchesService
+      .updatePlayerPoints(this.id, '', points)
+      .subscribe({ next: () => console.log('Se guardaron sus resultados') });
+  }
 }
