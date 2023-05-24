@@ -35,6 +35,8 @@ import { StudentComponent } from './principal/studentVisual/student/student.comp
 import { NavStudComponent } from './principal/studentVisual/nav-stud/nav-stud.component';
 import { VisualJuegosComponent } from './principal/visual-juegos/visual-juegos.component';
 import { CommonModule } from '@angular/common';
+import { NavGuestComponent } from './principal/guestVisual/nav-guest/nav-guest.component';
+import { GetInMatchComponent } from './components/get-in-match/get-in-match.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { CommonModule } from '@angular/common';
     StudentComponent,
     NavStudComponent,
     VisualJuegosComponent,
+    NavGuestComponent,
+    GetInMatchComponent,
   ],
 
   imports: [

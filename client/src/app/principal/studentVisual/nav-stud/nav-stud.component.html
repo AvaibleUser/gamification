@@ -1,8 +1,10 @@
 <nav>
-    <ul>
-      <li><a href="/homeJuegos">Juegos</a></li>
-      <li><a href="/homeStudent">Inicio</a></li>
-      <li><a href="/welcome">Cerrar sesion</a></li>
-    </ul>
-  </nav>
-  
+  <ul>
+    <li><a routerLink="jugar">Jugar</a></li>
+    <li><a routerLink="/estudiante">Inicio</a></li>
+    <li><a routerLink="/dashboard">Cerrar sesion</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

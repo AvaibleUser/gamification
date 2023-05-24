@@ -4,7 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MatchesService } from 'src/app/services/matches/matches.service';
 import { Match } from 'src/model/interfaces/match.interface';
 
@@ -19,6 +19,7 @@ export class MatchComponent implements OnInit {
   match: Match | undefined;
 
   constructor(
+    private router: Router,
     private ref: ChangeDetectorRef,
     private route: ActivatedRoute,
     private matchesService: MatchesService
@@ -28,9 +29,22 @@ export class MatchComponent implements OnInit {
     this.route.paramMap.subscribe(
       (param: ParamMap) => (this.id = param.get('id') ?? '')
     );
-    this.matchesService.getMatch(this.id).subscribe((apiMatch) => {
-      this.match = apiMatch;
-      this.ref.markForCheck();
+    this.matchesService.getMatch(this.id).subscribe({
+      next: (apiMatch) => {
+        if (!apiMatch) {
+          alert('El codigo no es valido');
+          this.router.navigate(['../'], { relativeTo: this.route });
+        }
+        this.match = apiMatch;
+
+        this.ref.markForCheck();
+      },
+      error: (err) => {
+        console.error(err);
+
+        alert('El codigo no es valido');
+        this.router.navigate(['../'], { relativeTo: this.route });
+      },
     });
   }
 }
