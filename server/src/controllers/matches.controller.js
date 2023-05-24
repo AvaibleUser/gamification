@@ -8,6 +8,7 @@ const {
   updatePlayerPoints,
 } = require("../services/matches.service");
 const mongoose = require("mongoose");
+const { findOneUser } = require("../services/users.service");
 
 function getObjectId(id) {
   if (typeof id === "string") {
@@ -87,6 +88,14 @@ async function createMatch(req, res) {
       );
   }
 
+  const user = await findOneUser(creator);
+
+  if (!user || user.student) {
+    return res
+      .status(400)
+      .send("Se debe de enviar el nombre de usuario de un profesor");
+  }
+
   const match = await saveMatch(game, creator, state);
 
   res.json(match);
@@ -132,6 +141,16 @@ async function addPlayerToTheMatch(req, res) {
         "Se debe de mandar un objeto con el id de la partida " +
           "y el nombre del usuario "
       );
+  }
+
+  if (guest === false) {
+    const user = await findOneUser(username);
+
+    if (!user?.student) {
+      return res
+        .status(400)
+        .send("El usuario no invitado debe de existir y ser estudiante");
+    }
   }
 
   await addPlayer(id, username, guest, points);
