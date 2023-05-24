@@ -50,6 +50,28 @@ async function getMatch(req, res) {
   }
 }
 
+
+async function getMatchError(req, res) {
+  try {
+    const { _id } = req.params;
+
+    if (!_id) {
+      return res.status(400).send("Se debe de enviar el id de la partida");
+    }
+
+    const match = await findOneMatch(getObjectId(_id));
+
+    if (match) {
+      res.json(match);
+    } else {
+      res.status(404).send(`No se encontro la partida ${_id}`);
+    }
+  } catch (error) {
+    console.error("Error al obtener el partido:", error);
+    res.status(500).send("Ocurrió un error en el servidor");
+  }
+}
+
 /**
  * @param {Request} req
  * @param {Response} res
@@ -194,4 +216,5 @@ module.exports = {
   addPlayerToTheMatch,
   changePlayerPoints,
   postChatMessage,
+  getMatchError,
 };

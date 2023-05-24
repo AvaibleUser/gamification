@@ -13,5 +13,14 @@ export class MatchesService {
   createMatch(matchData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}`, matchData);
   }
-
+  
+  getMatchById(id: string): Observable<any> {
+    const url = `${this.baseUrl}/${id}/error`;
+    return this.http.get(url);
+  }
+  
+  getMatchStateById(id: string): Observable<any> {
+    const url = `${this.baseUrl}/${id}/state`;
+    return this.http.get(url);
+  }
 }
