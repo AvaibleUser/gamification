@@ -23,25 +23,27 @@ export class LoginComponent {
     }
 
     this.authService.login(this.username, this.password)
-      .subscribe(
-        (response: Object) => {
+      .subscribe({
+        next: (response: Object) => {
           this.user = response as User;
           console.log('Inicio de sesión exitoso', this.user);
 
           const message = `Bienvenido, ${this.user.name} (${this.user.username})`;
 
           alert(message);
+          this.user.password = "";
+          localStorage.setItem("actualUser", JSON.stringify(this.user));
 
           if (this.user.student) {
-            this.router.navigate(['/homeStudent']);
+            this.router.navigate(['/estudiante']);
           } else {
-            this.router.navigate(['/homeProfesor']);
+            this.router.navigate(['/profesor']);
           }
         },
-        error => {
+        error: (error) => {
           console.error('Error al iniciar sesión', error);
           // Maneja el error de inicio de sesión, muestra un mensaje de error, etc.
         }
-      );
+      });
   }
 }
