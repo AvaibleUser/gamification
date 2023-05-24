@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameOneComponent } from './game-one/game-one/game-one.component';
@@ -32,6 +32,7 @@ import { NavAdminComponent } from './principal/adminVisual/nav-admin/nav-admin.c
 import { StudentComponent } from './principal/studentVisual/student/student.component';
 import { NavStudComponent } from './principal/studentVisual/nav-stud/nav-stud.component';
 import { VisualJuegosComponent } from './principal/visual-juegos/visual-juegos.component';
+import { PalabrasComponent } from './gameTwo/palabras/palabras.component';
 
 
 //import { PrincipalModule } from './principal/principal.module';
@@ -58,7 +59,8 @@ import { VisualJuegosComponent } from './principal/visual-juegos/visual-juegos.c
     NavAdminComponent,
     StudentComponent,
     NavStudComponent,
-    VisualJuegosComponent
+    VisualJuegosComponent,
+    PalabrasComponent
     
 
   ],
@@ -72,6 +74,7 @@ import { VisualJuegosComponent } from './principal/visual-juegos/visual-juegos.c
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule    
   ],
   providers: [GameDataService],

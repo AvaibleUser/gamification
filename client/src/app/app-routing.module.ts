@@ -10,6 +10,7 @@ import { GameSopaComponent } from './gameTwo/game-sopa/game-sopa.component';
 import { PreguntaComponent } from './game-preguntas/components/pregunta/pregunta.component';
 import { CrearPreguntasComponent } from './game-preguntas/components/crear-preguntas/crear-preguntas.component';
 import { CrearTriviaComponent } from './game-preguntas/components/crear-trivia/crear-trivia.component';
+import { PalabrasComponent } from './gameTwo/palabras/palabras.component';
 
 //Login y registro
 import { LoginComponent } from './autenticacion/pages/login/login.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'sopa', component: GameTwoComponent },
   { path: 'playsopa', component: GameSopaComponent },
   { path: 'welcome', component: InicioComponent},
+  { path: 'formSopa', component: PalabrasComponent},
   {path: 'homeStudent',component: StudentComponent},
   {path: 'homeProfesor',component: AdminComponent},
   {path: 'homeJuegos',component: VisualJuegosComponent},

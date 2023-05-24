@@ -1,0 +1,42 @@
+<br>
+<h1>Fomulario para Crear un Juego</h1>
+<h1>Sopa de Letras o MixWords</h1>
+<br>
+<form [formGroup]="matchForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="game">Juego:</label>
+        <select id="game" formControlName="game" required>
+          <option value="Sopa de letras">Sopa de letras</option>
+          <option value="MixWords">MixWords</option>
+        </select>
+        <div *ngIf="matchForm.controls['game'].invalid && matchForm.controls['game'].touched">
+          Juego es obligatorio.
+        </div>
+      </div>  
+    <div>
+      <label for="creator">Creador:</label>
+      <input type="text" id="creator" formControlName="creator" required>
+      <div *ngIf="matchForm.controls['creator'].invalid && matchForm.controls['creator'].touched">
+        Creador es obligatorio.
+      </div>
+    </div>
+
+    <div>
+        <label for="state">Palabras:</label>
+        <input type="text" id="state" formControlName="state" #stateInput (change)="convertToUpperCase($event)">
+        <button type="button" (click)="agregarPalabra(stateInput.value)">Agregar palabra</button>
+      </div>
+      
+      
+  
+    <div *ngIf="palabras.length > 0">
+      Palabras ingresadas: {{ palabras.join(', ') }}
+    </div>
+  
+    <button type="submit" [disabled]="matchForm.invalid">Crear partida</button>
+  </form>
+  <br>
+  <br>
+  <div *ngFor="let mensaje of mensajes" class="mensaje">
+    {{ mensaje }}
+  </div>
