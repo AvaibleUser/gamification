@@ -11,7 +11,13 @@
         required
         [(ngModel)]="matchId"
       />
-      <button (click)="addPlayerToMatch" class="btn btn-primary">
+      <input
+        *ngIf="!username"
+        placeholder="Nombre de usuario"
+        class="input input-bordered"
+        [(ngModel)]="guestUsername"
+      />
+      <button (click)="(addPlayerToMatch())" class="btn btn-primary">
         Comenzar
       </button>
     </div>
