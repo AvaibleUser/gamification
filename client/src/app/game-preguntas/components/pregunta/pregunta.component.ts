@@ -1,7 +1,8 @@
 
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Pregunta, Trivia } from '../../interfaces/pregunta.interface';
 
 @Component({
   selector: 'app-pregunta',
@@ -9,6 +10,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./pregunta.component.css'],
 })
 export class PreguntaComponent {
+
+  //@Input('trivia') 
+  
+  trivia!:Trivia;
+  
   pregunta:{
     id: number;
     pregunta: string;
@@ -17,40 +23,47 @@ export class PreguntaComponent {
 
 
   } | undefined
-  preguntas: any[] = [
-    {
-      pregunta: '¿Cuál es la capital de Francia?',
-      respuestas: ['Paris', 'Londres', 'Madrid', 'Roma'],
-      respuestaCorrecta: 'Paris'
-    },
-    {
-      pregunta: '¿Cuál es el resultado de 2 + 2?',
-      respuestas: ['3', '4', '5', '6'],
-      respuestaCorrecta: '4'
-    },
-    {
-      pregunta: '¿En qué año se fundó la compañía Apple?',
-      respuestas: ['1976', '1984', '1990', '2001'],
-      respuestaCorrecta: '1990'
-    },
-    {
-      pregunta: '¿Cuál es el océano más grande del mundo?',
-      respuestas: ['Atlántico', 'Índico', 'Pacífico', 'Ártico'],
-      respuestaCorrecta: 'Índico'
-    },
-    {
-      pregunta: '¿Quién escribió el libro "Cien años de soledad"?',
-      respuestas: [
-        'Gabriel García Márquez',
-        'Mario Vargas Llosa',
-        'Pablo Neruda',
-        'Jorge Luis Borges',
-      ],
-      respuestaCorrecta: 'Gabriel García Márquez'
-    },
-    // Resto de las preguntas
-  ];
-  constructor(private router: Router) {}
+  
+
+  // trivia: Trivia={
+  //   codigo:'hola',
+  //   autor: 'Soy yo',
+  //   nombreTrivia: "pregutnas random",
+  //   preguntas:[
+  //     {
+  //       enunciado: '¿Cuál es la capital de Francia?',
+  //       respuestas: ['Paris', 'Londres', 'Madrid', 'Roma'],
+  //       respuestaCorrecta: 'Paris'
+  //     },
+  //     {
+  //       enunciado: '¿Cuál es el resultado de 2 + 2?',
+  //       respuestas: ['3', '4', '5', '6'],
+  //       respuestaCorrecta: '4'
+  //     },
+  //     {
+  //       enunciado: '¿En qué año se fundó la compañía Apple?',
+  //       respuestas: ['1976', '1984', '1990', '2001'],
+  //       respuestaCorrecta: '1990'
+  //     },
+  //     {
+  //       enunciado: '¿Cuál es el océano más grande del mundo?',
+  //       respuestas: ['Atlántico', 'Índico', 'Pacífico', 'Ártico'],
+  //       respuestaCorrecta: 'Índico'
+  //     },
+  //     {
+  //       enunciado: '¿Quién escribió el libro "Cien años de soledad"?',
+  //       respuestas: [
+  //         'Gabriel García Márquez',
+  //         'Mario Vargas Llosa',
+  //         'Pablo Neruda',
+  //         'Jorge Luis Borges',
+  //       ],
+  //       respuestaCorrecta: 'Gabriel García Márquez'
+  //     },
+  //     // Resto de las preguntas
+  //   ]
+  // }
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   preguntaActual: any;
   preguntaIndex: number = 0;
@@ -61,16 +74,30 @@ export class PreguntaComponent {
   respuestasCorrectas:number=0; 
   puntajeTotal:number=0;
 
+  // ngOnInit() {
+  //   // this.trivia = this.route.snapshot.data.trivia;
+  //   // this.trivia = this.route.snapshot.state?.trivia;
+  //   console.log(this.trivia);
+    
+  //   //this.iniciarPregunta();
+  // }
   ngOnInit() {
-    this.iniciarPregunta();
+    const triviaString = this.route.snapshot.paramMap.get('trivia');
+    if (triviaString) {
+      this.trivia = JSON.parse(triviaString);
+      console.log('hola', this.trivia);
+      this.iniciarPregunta();
+    }
+    // Resto del código...
   }
+  
 
   iniciarPregunta() {
     if (this.finalizado) {
       return;
     }
 
-    this.preguntaActual = this.preguntas[this.preguntaIndex];
+    this.preguntaActual = this.trivia.preguntas[this.preguntaIndex];
     this.tiempoRestante = 10;
 
     // Iniciar temporizador
@@ -87,7 +114,7 @@ export class PreguntaComponent {
     // Detener el temporizador actual
     clearInterval(this.intervalo);
     // Lógica para verificar si la respuesta es correcta y realizar acciones correspondientes
-    if (this.preguntas[this.preguntaIndex].respuestaCorrecta === respuesta) {
+    if (this.trivia.preguntas[this.preguntaIndex].respuestaCorrecta === respuesta) {
       //console.log(respuesta + ' es igual a ' + this.preguntas[this.preguntaIndex].respuestaCorrecta);
       this.respuestasCorrectas++; 
       Swal.fire({
@@ -101,7 +128,7 @@ export class PreguntaComponent {
       Swal.fire({
         icon: 'error',
         title: 'Respuesta incorrecta',
-        text: `La respuesta correcta es: ${this.preguntas[this.preguntaIndex].respuestaCorrecta}`,
+        text: `La respuesta correcta es: ${this.trivia.preguntas[this.preguntaIndex].respuestaCorrecta}`,
         timer: 2000,
         showConfirmButton: false
       });
@@ -109,7 +136,7 @@ export class PreguntaComponent {
   
     // Avanzar a la siguiente pregunta
     this.preguntaIndex++;
-    if (this.preguntaIndex < this.preguntas.length) {
+    if (this.preguntaIndex < this.trivia.preguntas.length) {
       this.iniciarPregunta();
     } else {
       // Aquí puedes manejar el caso de que no haya más preguntas disponibles
@@ -121,12 +148,18 @@ export class PreguntaComponent {
   }
 
   calcularPuntaje() {
-    return (this.respuestasCorrectas / this.preguntas.length) * 100;
+    return (this.respuestasCorrectas / this.trivia.preguntas.length) * 100;
   }
   
 
   getColorClass(index: number): string {
     const colors = ['blue', 'yellow', 'red', 'lightblue'];
     return colors[index % colors.length];
+  }
+
+  salir() {
+    // Redirigir al usuario a la página de inicio o a otra página
+    clearInterval(this.intervalo)
+    this.router.navigate(['/iniciio-pregunta']);
   }
 }

@@ -23,23 +23,23 @@ export class CrearPreguntasComponent {
 
   crearPregunta() {
     // Validar si los campos están llenos
-    if (
-      this.enunciado.trim() === '' ||
-      this.respuestas[0].trim() === '' ||
-      this.respuestas[1].trim() === '' ||
-      this.respuestas[2].trim() === '' ||
-      this.respuestaCorrecta.trim() === ''
-    ) {
-      //alert('Por favor, completa todos los campos prer');
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: `Completa todos los campos  `,
-        timer: 2000,
-        showConfirmButton: true
-      });
-      return;
-    }
+    // if (
+    //   this.enunciado.trim() === '' ||
+    //   this.respuestas[0].trim() === '' ||
+    //   this.respuestas[1].trim() === '' ||
+    //   this.respuestas[2].trim() === '' ||
+    //   this.respuestaCorrecta.trim() === '' 
+    // ) {
+    //   //alert('Por favor, completa todos los campos prer');
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Error',
+    //     text: `Completa todos los campos pregutna `,
+    //     timer: 2000,
+    //     showConfirmButton: true
+    //   });
+    //   return;
+    // }
 
     // Crear objeto de pregunta
     const nuevaPregunta: Pregunta = {
@@ -77,18 +77,24 @@ export class CrearPreguntasComponent {
 
     // Crear objeto de trivia
     this.trivia = {
-      id: 1, // Aquí puedes generar un id único para la trivia
+       // Aquí puedes generar un id único para la trivia
       codigo: this.codigo,
-      nombreTrivia: '',
+      nombreTrivia: this.nombreTrivia ,
       autor: this.autor,
       preguntas: this.preguntas
     };
     console.log(this.trivia);
 
     // Guardar la trivia en la base de datos (usando un servicio)
-    this.preguntaService.guardarTrivia(this.trivia).subscribe(
+    this.preguntaService.agregarTrivia1(this.trivia).subscribe(
       () => {
-        alert('La trivia se ha guardado correctamente');
+        //alert('La trivia se ha guardado correctamente');
+        Swal.fire({
+          icon: 'success',
+          title: 'La trivia se ha guardado correctamente',
+          timer: 2000,
+          showConfirmButton: false
+        });
         // Limpiar los campos del formulario
         this.codigo = '';
         this.autor = '';
@@ -101,4 +107,6 @@ export class CrearPreguntasComponent {
       }
     );
   }
+
+  
 }

@@ -22,22 +22,22 @@
           <input type="text" class="form-control" id="enunciado" [(ngModel)]="enunciado" name="pregunta" required>
         </div>
         <div class="form-group">
-          <label for="respuestaCorrecta">Respuesta correcta:</label>
+          <label for="respuestaCorrecta">Respuesta numeo 1:</label>
           <input type="text" class="form-control" id="respuestaCorrecta" [(ngModel)]="respuestas[0]"
             name="respuestaCorrecta" required>
         </div>
         <div class="form-group">
-          <label for="respuestaIncorrecta1">Respuesta incorrecta 1:</label>
+          <label for="respuestaIncorrecta1">Respuesta numeo 2:</label>
           <input type="text" class="form-control" id="respuestaIncorrecta1" [(ngModel)]="respuestas[1]"
             name="respuestaIncorrecta1" required>
         </div>
         <div class="form-group">
-          <label for="respuestaIncorrecta2">Respuesta incorrecta 2:</label>
+          <label for="respuestaIncorrecta2">Respuesta numeo 3:</label>
           <input type="text" class="form-control" id="respuestaIncorrecta2" [(ngModel)]="respuestas[2]"
             name="respuestaIncorrecta2" required>
         </div>
         <div class="form-group">
-          <label>Respuesta Correcta:</label>
+          <label>Seleccione la respuesta Correcta:</label>
           <select class="form-control" [(ngModel)]="respuestaCorrecta" name="respuestaCorrecta">
             <option *ngFor="let item of respuestas" [value]="item">{{item}}</option>
           </select>
@@ -46,10 +46,8 @@
         <button type="submit" class="btn btn-primary">Crear pregunta</button>
         <hr>
         <button (click)="guardarTrivia()" class="btn btn-primary">Crear trivia</button>
-  
-  
-  
       </form>
+      
     </div>
     <br>
     <div class="container col-6 text-light">
