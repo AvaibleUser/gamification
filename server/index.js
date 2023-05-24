@@ -1,9 +1,10 @@
-const express = require("express");
+  const express = require("express");
 const cors = require("cors");
 const config = require("dotenv").config;
 
 const { configMongoose } = require("./config/mongo.config");
 const { morganConfig } = require("./config/morgan.config");
+const triviaRoutes = require('./src/routes/trivia.route');
 
 const app = express();
 
@@ -16,6 +17,8 @@ configMongoose(url);
 app.use(cors());
 app.use(express.json());
 app.use(morganConfig());
+
+app.use('/trivia', triviaRoutes);
 
 const PORT = process.env.PORT || 3001;
 
