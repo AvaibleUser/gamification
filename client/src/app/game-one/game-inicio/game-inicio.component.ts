@@ -114,7 +114,7 @@ constructor(private gameDataService: GameDataService, private router: Router) {}
       this.router.navigate(['/ranking']);
     } else {
       // Cambiar al siguiente jugador
-//      this.moveToNextPlayer();
+      this.moveToNextPlayer();
     }
   }
   
@@ -125,7 +125,7 @@ constructor(private gameDataService: GameDataService, private router: Router) {}
     }
 
     const currentPlayer = this.players[this.currentPlayerIndex];
-    alert('Turno del jugador: ' + currentPlayer);
+ //   alert('Turno del jugador: ' + currentPlayer);
 
   }  
 
