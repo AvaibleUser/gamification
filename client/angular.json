@@ -93,11 +93,8 @@
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-=======
               "@angular/material/prebuilt-themes/purple-green.css",
->>>>>>> remotes/origin/game_preguntas
               "src/styles.css"
             ],
             "scripts": [
