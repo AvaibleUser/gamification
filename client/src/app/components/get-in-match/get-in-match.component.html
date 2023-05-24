@@ -5,8 +5,13 @@
         Ya casi puedes empezar a jugar, solo debes de proporcionar el cofigo del
         juego
       </h1>
-      <input placeholder="Codigo del juego" class="input input-bordered" required [(ngModel)]="matchId" />
-      <button routerLink="" class="btn btn-primary">
+      <input
+        placeholder="Codigo del juego"
+        class="input input-bordered"
+        required
+        [(ngModel)]="matchId"
+      />
+      <button (click)="addPlayerToMatch" class="btn btn-primary">
         Comenzar
       </button>
     </div>
