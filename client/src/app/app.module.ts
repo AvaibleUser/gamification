@@ -27,6 +27,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BarraComponent } from './principal/barra/barra.component';
 import { InicioComponent } from './principal/inicio/inicio.component';
 import { NavJuegosComponent } from './principal/nav-juegos/nav-juegos.component';
+import { AdminComponent } from './principal/adminVisual/admin/admin.component';
+import { NavAdminComponent } from './principal/adminVisual/nav-admin/nav-admin.component';
+import { StudentComponent } from './principal/studentVisual/student/student.component';
+import { NavStudComponent } from './principal/studentVisual/nav-stud/nav-stud.component';
+import { VisualJuegosComponent } from './principal/visual-juegos/visual-juegos.component';
 
 
 //import { PrincipalModule } from './principal/principal.module';
@@ -48,7 +53,12 @@ import { NavJuegosComponent } from './principal/nav-juegos/nav-juegos.component'
     GameTarjetaComponent,
     BarraComponent,
     InicioComponent,
-    NavJuegosComponent
+    NavJuegosComponent,
+    AdminComponent,
+    NavAdminComponent,
+    StudentComponent,
+    NavStudComponent,
+    VisualJuegosComponent
     
 
   ],
