@@ -1,48 +1,10 @@
 <mat-sidenav-container fullscreen>
-    <app-barra></app-barra>
-    <!-- <div class="container">
-      <div class="left-column">
-        <mat-card>
-          <mat-card-content>
-            <h2>Ingresar a una Trivia</h2>
-            <mat-form-field>
-              <input matInput placeholder="Código de acceso" [(ngModel)]="codigoAcceso">
-            </mat-form-field>
-            <button mat-raised-button color="primary" (click)="ingresarTrivia()">Ingresar</button>
-          </mat-card-content>
-        </mat-card>
-        
-        <mat-card>
-          <mat-card-content>
-            <h2>Trivias Públicas</h2>
-            <mat-list>
-              <mat-list-item *ngFor="let trivia of triviasPublicas">
-                <h3 mat-line>{{ trivia.titulo }}</h3>
-                <p mat-line>{{ trivia.descripcion }}</p>
-                <button mat-raised-button color="primary" >Ingresar</button>
-              </mat-list-item>
-            </mat-list>
-          </mat-card-content>
-        </mat-card>
-      </div>
-  
-      <div class="right-column">
-        <mat-card>
-          <mat-card-content>
-            <h2>Ranking de Puntajes Altos</h2>
-            <mat-list>
-              <mat-list-item *ngFor="let puntaje of puntajesAltos">
-                <div class="ranking-item">
-                  <h3 mat-line>{{ puntaje.nombre }}</h3>
-                  <p mat-line>Puntaje: {{ puntaje.puntaje }}</p>
-                </div>
-              </mat-list-item>
-            </mat-list>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div> -->
+    <!-- <app-barra></app-barra> -->
+    <app-nav-juegos></app-nav-juegos>
+    <hr>
+    <br>
     <div class="container">
+      
         <div class="left-column">
           <div class="code-input">
             <!-- Contenido del código de acceso -->

@@ -160,6 +160,6 @@ export class PreguntaComponent {
   salir() {
     // Redirigir al usuario a la página de inicio o a otra página
     clearInterval(this.intervalo)
-    this.router.navigate(['/iniciio-pregunta']);
+    this.router.navigate(['/inicio-preguntas']);
   }
 }

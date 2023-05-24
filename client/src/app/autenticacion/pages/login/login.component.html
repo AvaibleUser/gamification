@@ -1,19 +1,16 @@
 <mat-sidenav-container fullscreen>
     <app-barra></app-barra>
+    <br>
     <div class="container">
       <h1>Iniciar Sesión</h1>
       <div fxLayout="row" fxLayoutGap="40px " fxLayout.xs="column">
         <div fxFlex="50" fxLayout="column">
-          <!-- <div fxLayout="row" fxLayoutGap="50px "> -->
+          <div fxLayout="row" fxLayoutGap="40px ">
             <mat-form-field>
               <mat-label>Nombre de usuario</mat-label>
               <input matInput type="text" [(ngModel)]="username" name="username" required>
             </mat-form-field>
-          
-          <!-- <mat-form-field>
-            <mat-label>Correo electrónico</mat-label>
-            <input matInput type="email" [(ngModel)]="email" name="email" required>
-          </mat-form-field> -->
+          </div>
           <br>
           <mat-form-field>
             <mat-label>Contraseña</mat-label>
@@ -27,5 +24,6 @@
         </div>
       </div>
     </div>
+    
   </mat-sidenav-container>
   

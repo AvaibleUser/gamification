@@ -44,8 +44,10 @@ async function makeLogin(req, res) {
     const user = await login(username, password);
 
     res.json(user);
+    console.log('Usuario');
   } catch (err) {
     res.status(400).send(err.message);
+    console.log('No es usuario');
   }
 }
 
@@ -66,6 +68,10 @@ async function makeSignup(req, res) {
   }
 
   await signup(name, username, password, student);
+  console.log("signup");
+
+  // Envía una respuesta al cliente con los datos del usuario registrado
+  res.status(201).json({ message: "Usuario registrado correctamente" });
 
   res.status(201);
 }

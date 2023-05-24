@@ -1,8 +1,13 @@
-<mat-sidenav-container fullscreen>
-  <app-barra></app-barra>
+<!-- <mat-sidenav-container fullscreen> -->
+  <!-- <app-barra></app-barra> -->
+  <app-nav-juegos></app-nav-juegos>
   <div class="row">
     <div class="container col-6 text-light">
-      <h3>Crear pregunta</h3>
+      <h3>Crear Trivia</h3>
+      <div>
+        <span>Puede ingresar una pregunta, que se recomienda tenga respuestas cortas preferiblemente de una sola palabra, debe ingresar tres posibles respuestas, y solo una sera la  correcta</span>
+      </div>
+      <hr>
       <form (submit)="crearPregunta()">
         <div class="form-group">
           <label for="pregunta">Nombre de la trivia:</label>
@@ -50,17 +55,17 @@
       
     </div>
     <br>
-    <div class="container col-6 text-light">
+    <div class="container col-6  text-light">
       <ul>
         <li *ngFor="let pregunta of preguntas">
-          <h5>{{pregunta.enunciado}}</h5>
+          <h3>{{pregunta.enunciado}}</h3>
           <ul>
-            <li *ngFor="let res of pregunta.respuestas">{{res}}</li>
+            <li *ngFor="let res of pregunta.respuestas; " ngfor>{{res }}</li>
           </ul>
         </li>
       </ul>
     </div>
   </div>
   
-</mat-sidenav-container>
+<!-- </mat-sidenav-container> -->
   

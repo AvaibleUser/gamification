@@ -1,8 +1,4 @@
-<mat-toolbar>
-    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button> -->
-    <h1><span>LearnQuest</span></h1>
+<!-- <mat-toolbar>
     <span class="example-spacer"></span>
     <span class="spacer"></span>
     <button mat-button [routerLink]="['/home']" >
@@ -17,7 +13,15 @@
       Registrarse
       <mat-icon>account_circle</mat-icon>
     </button> 
-    <button mat-button >
+    <button mat-button [routerLink]="['/welcome']">
       <mat-icon>power_settings_new</mat-icon>
     </button>    
-  </mat-toolbar>
+  </mat-toolbar> -->
+  <nav>
+    <ul>
+      <li><a routerLink="/jugar">Jugar</a></li>
+      <li><a routerLink="/dashboard">Inicio</a></li>
+      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="/registro" routerLinkActive="active">Registrarse</a></li>
+    </ul>
+  </nav>

@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 })
 export class InicioPreguntasComponent {
   constructor(private preguntaService: PreguntaService, private router: Router) {}
-  // 
-
   
   triviasPublicas: any[] = [
     {
@@ -28,25 +26,22 @@ export class InicioPreguntasComponent {
 
   puntajesAltos: any[] = [
     {
-      nombre: 'Jugador1',
+      nombre: 'Estuardo',
       puntaje: 100
     },
     {
-      nombre: 'Jugador2',
-      puntaje: 90
+      nombre: 'Lore2',
+      puntaje: 70
     },
     {
-      nombre: 'Jugador1',
-      puntaje: 100
+      nombre: 'Fer123',
+      puntaje: 66
     },
     {
-      nombre: 'Jugador2',
-      puntaje: 90
+      nombre: 'Jhon',
+      puntaje: 50
     },
-    {
-      nombre: 'Jugador1',
-      puntaje: 100
-    },
+    
     
     // Agrega más puntajes altos aquí
   ];

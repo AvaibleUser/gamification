@@ -20,7 +20,7 @@ async function login(username, password) {
   const user = await usersModel.findOne({ username });
 
   if (!user) {
-    throw new Error("El usuario o la contraseña son incorrectas");
+    throw new Error("El usuario o la contraseña no existe");
   }
 
   const isCorrectCredentials = await bcrypt.compare(password, user.password);
@@ -39,17 +39,16 @@ async function login(username, password) {
  * @param {boolean} student
  */
 async function signup(name, username, password, student) {
-  const hashedPassword = await bcrypt.hash(password, salt);
-
   await usersModel.create({
     name,
     username,
     student,
-    password: hashedPassword,
+    password,
   });
 
   return true;
 }
+
 
 /**
  * @param {{
