@@ -13,7 +13,6 @@ import { GameSopaComponent } from './../game-sopa/game-sopa.component';
 export class GameTwoComponent {
   matchForm: FormGroup;
   codigoIncorrecto = false;
-  matchState: any;
 
   constructor(
     private formBuilder: FormBuilder,

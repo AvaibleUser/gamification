@@ -47,9 +47,9 @@ async function getGameInfo(req, res) {
    * @param {Response} res
    */
 async function createGame(req, res) {
-  const { name: gameName, description, image, url, maxPlayers } = req.body;
+  const { name: gameName, description, image, maxPlayers } = req.body;
 
-  if (!gameName || !description || !image || !url || !maxPlayers) {
+  if (!gameName || !description || !image || !maxPlayers) {
     return res
       .status(400)
       .send(

@@ -11,6 +11,7 @@ const { gamesRoutes } = require("./src/routes/games.route");
 const { matchesRoutes } = require("./src/routes/matches.route");
 const { medalsRoutes } = require("./src/routes/medals.route");
 const { usersRoutes } = require("./src/routes/users.route");
+const { publicRoutes } = require("./src/routes/public.route");
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use("/games", gamesRoutes);
 app.use("/matches", matchesRoutes);
 app.use("/medals", medalsRoutes);
 app.use("/users", usersRoutes);
+app.use("/public", publicRoutes);
 
 // agregado de middlewares
 app.use(errorsMiddleware);

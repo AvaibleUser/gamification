@@ -21,7 +21,7 @@ export class GameInicioComponent implements OnInit {
   hintLetters: string[][] = [];
   startTime: Date = new Date();
 //Jugadores  
-  players: string[] = ['Jugador 1', 'Jugador 2']; // Array con los nombres de los jugadores
+  players: string[] = ['Fe12', 'Marco1']; // Array con los nombres de los jugadores
   currentPlayerIndex: number = 0; // Índice del jugador actual
   playerScores: number[] = [0, 0]; // Puntajes de los jugadores
 //  Configuracion del tiempo
@@ -114,7 +114,7 @@ constructor(private gameDataService: GameDataService, private router: Router) {}
       this.router.navigate(['/ranking']);
     } else {
       // Cambiar al siguiente jugador
-      this.moveToNextPlayer();
+//      this.moveToNextPlayer();
     }
   }
   

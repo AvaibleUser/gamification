@@ -33,9 +33,9 @@ export class LoginComponent {
           alert(message);
 
           if (this.user.student) {
-            this.router.navigate(['/homeStudent']);
+            this.router.navigate(['/estudiante']);
           } else {
-            this.router.navigate(['/homeProfesor']);
+            this.router.navigate(['/profesor']);
           }
         },
         error => {

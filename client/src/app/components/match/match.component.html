@@ -1,0 +1,8 @@
+<ng-container [ngSwitch]="match?.game">
+  <app-board
+    *ngSwitchCase="'crucigrama'"
+    [id]="id"
+    [letters]="match?.state?.letters"
+    [hints]="match?.state?.hints"
+  ></app-board>
+</ng-container>
